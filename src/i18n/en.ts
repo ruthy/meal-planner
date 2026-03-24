@@ -216,6 +216,52 @@ const en: Record<string, string> = {
   // Footer
   'footer.copyright': 'The plan that transforms how you eat.',
 
+  // Landing page
+  'landing.hero.title': 'The plan that transforms how you eat.',
+  'landing.hero.subtitle':
+    'A personalized gluten-free meal planner designed for women 40+. Track meals, water, exercise, and weight — all in one beautiful app.',
+  'landing.hero.cta': 'Get Started Free →',
+  'landing.hero.cta_dashboard': 'Go to Dashboard →',
+  'landing.hero.learn_more': 'Learn More ↓',
+
+  'landing.features.title': 'Everything you need in one place',
+
+  'landing.feature.meals.title': '7-Day Meal Plan',
+  'landing.feature.meals.desc':
+    'Complete gluten-free meals with per-ingredient macros. 1,150 cal/day, perfectly balanced.',
+  'landing.feature.calculator.title': 'Calorie Calculator',
+  'landing.feature.calculator.desc': 'Personalized daily target based on your age, weight, height & activity level.',
+  'landing.feature.water.title': 'Water Tracker',
+  'landing.feature.water.desc': '8 glasses a day with tap-to-track and daily reminders.',
+  'landing.feature.exercise.title': 'Exercise Videos',
+  'landing.feature.exercise.desc': '7–12 minute low-impact workouts with embedded YouTube tutorials.',
+  'landing.feature.shots.title': 'Morning Shots',
+  'landing.feature.shots.desc': 'MetaBoost wellness shots designed for metabolism and hormone balance.',
+  'landing.feature.progress.title': 'Progress Tracking',
+  'landing.feature.progress.desc': 'Weight trend charts, daily streaks, and completion tracking.',
+
+  'landing.social.title': 'Designed for real results',
+  'landing.social.stat1': 'cal/day balanced plan',
+  'landing.social.stat2': 'unique daily menus',
+  'landing.social.stat3': 'exercise videos with tutorials',
+
+  'landing.how.title': 'How it works',
+  'landing.how.step1.title': 'Sign up in 30 seconds',
+  'landing.how.step1.desc': 'Create your free account — no credit card required.',
+  'landing.how.step2.title': 'Get your personalized plan',
+  'landing.how.step2.desc': 'The calculator adjusts meals to your body and goals.',
+  'landing.how.step3.title': 'Track daily & see results',
+  'landing.how.step3.desc': 'Water, meals, exercise, weight — all in one place.',
+
+  'landing.bilingual': '🌍 Available in English and Hebrew with full RTL support',
+
+  'landing.cta.title': 'Start your transformation today.',
+  'landing.cta.subtitle': 'No credit card required. Free forever.',
+  'landing.cta.button': 'Get Started Free →',
+
+  'landing.footer.privacy': 'Privacy',
+  'landing.footer.terms': 'Terms',
+
   // Common
   'common.cal': 'cal',
   'common.loading': 'Loading...',

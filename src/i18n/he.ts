@@ -225,6 +225,51 @@ const he: Record<string, string> = {
   // Footer
   'footer.copyright': 'התוכנית שמשנה את הדרך שבה את אוכלת.',
 
+  // Landing page
+  'landing.hero.title': 'התוכנית שמשנה את הדרך שבה את אוכלת.',
+  'landing.hero.subtitle':
+    'תכנון ארוחות ללא גלוטן מותאם אישית לנשים 40+. מעקב ארוחות, מים, פעילות גופנית ומשקל — הכל באפליקציה אחת.',
+  'landing.hero.cta': 'התחילי בחינם →',
+  'landing.hero.cta_dashboard': 'ללוח הבקרה →',
+  'landing.hero.learn_more': 'למידע נוסף ↓',
+
+  'landing.features.title': 'הכל במקום אחד',
+
+  'landing.feature.meals.title': 'תפריט ל-7 ימים',
+  'landing.feature.meals.desc': 'ארוחות ללא גלוטן עם מאקרו לכל מרכיב. 1,150 קלוריות ביום, מאוזן לחלוטין.',
+  'landing.feature.calculator.title': 'מחשבון קלוריות',
+  'landing.feature.calculator.desc': 'יעד יומי מותאם אישית לפי גיל, משקל, גובה ורמת פעילות.',
+  'landing.feature.water.title': 'מעקב מים',
+  'landing.feature.water.desc': '8 כוסות ביום עם מעקב בנגיעה ותזכורות יומיות.',
+  'landing.feature.exercise.title': 'סרטוני אימונים',
+  'landing.feature.exercise.desc': 'אימונים של 7–12 דקות בעומס נמוך עם סרטוני YouTube מוטמעים.',
+  'landing.feature.shots.title': 'שוטים בוקר',
+  'landing.feature.shots.desc': 'שוטי בריאות MetaBoost לחילוף חומרים ואיזון הורמונלי.',
+  'landing.feature.progress.title': 'מעקב התקדמות',
+  'landing.feature.progress.desc': 'גרפי מגמת משקל, רצפים יומיים ומעקב השלמה.',
+
+  'landing.social.title': 'מתוכנן לתוצאות אמיתיות',
+  'landing.social.stat1': 'קלוריות/יום בתוכנית מאוזנת',
+  'landing.social.stat2': 'תפריטים יומיים ייחודיים',
+  'landing.social.stat3': 'סרטוני אימונים עם הדרכה',
+
+  'landing.how.title': 'איך זה עובד',
+  'landing.how.step1.title': 'הרשמה ב-30 שניות',
+  'landing.how.step1.desc': 'צרי חשבון חינמי — ללא צורך בכרטיס אשראי.',
+  'landing.how.step2.title': 'קבלי תוכנית מותאמת אישית',
+  'landing.how.step2.desc': 'המחשבון מתאים את הארוחות לגוף ולמטרות שלך.',
+  'landing.how.step3.title': 'עקבי מדי יום וראי תוצאות',
+  'landing.how.step3.desc': 'מים, ארוחות, פעילות, משקל — הכל במקום אחד.',
+
+  'landing.bilingual': '🌍 זמין באנגלית ובעברית עם תמיכה מלאה ב-RTL',
+
+  'landing.cta.title': 'התחילי את השינוי היום.',
+  'landing.cta.subtitle': 'ללא צורך בכרטיס אשראי. חינם לנצח.',
+  'landing.cta.button': 'התחילי בחינם →',
+
+  'landing.footer.privacy': 'פרטיות',
+  'landing.footer.terms': 'תנאי שימוש',
+
   // Common
   'common.cal': 'קל׳',
   'common.loading': 'טוען...',

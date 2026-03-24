@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /auth
+Disallow: /update-password
+Disallow: /reset-password
+
+Sitemap: https://www.dailybite.fit/sitemap.xml

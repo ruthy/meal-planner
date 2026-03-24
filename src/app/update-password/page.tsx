@@ -31,7 +31,7 @@ export default function UpdatePasswordPage() {
       setError(err.message);
       return;
     }
-    router.push('/');
+    router.push('/dashboard');
   };
 
   const inputClass =

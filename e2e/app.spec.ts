@@ -1,10 +1,17 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Login page', () => {
-  test('shows DailyBite branding and sign-in form', async ({ page }) => {
-    await page.goto('/login');
+test.describe('Landing page', () => {
+  test('shows DailyBite branding and CTA', async ({ page }) => {
+    await page.goto('/');
     await expect(page).toHaveTitle(/DailyBite/);
-    await expect(page.getByText('DailyBite')).toBeVisible();
+    await expect(page.getByText('DailyBite').first()).toBeVisible();
+    await expect(page.getByText(/get started free|go to dashboard/i).first()).toBeVisible();
+  });
+});
+
+test.describe('Login page', () => {
+  test('shows sign-in form', async ({ page }) => {
+    await page.goto('/login');
     await expect(page.getByRole('textbox', { name: /email/i })).toBeVisible();
     await expect(page.getByRole('textbox', { name: /password/i })).toBeVisible();
     await expect(page.getByRole('button', { name: /sign in →/i })).toBeVisible();
@@ -12,7 +19,10 @@ test.describe('Login page', () => {
 
   test('can switch to sign-up tab', async ({ page }) => {
     await page.goto('/login');
-    await page.getByRole('button', { name: /sign up/i }).first().click();
+    await page
+      .getByRole('button', { name: /sign up/i })
+      .first()
+      .click();
     await expect(page.getByRole('textbox', { name: /full name|ruthy/i })).toBeVisible();
   });
 
@@ -38,8 +48,8 @@ test.describe('Login page', () => {
 });
 
 test.describe('Auth redirect', () => {
-  test('unauthenticated user is redirected to /login', async ({ page }) => {
-    await page.goto('/');
+  test('unauthenticated user visiting /dashboard is redirected to /login', async ({ page }) => {
+    await page.goto('/dashboard');
     await page.waitForURL(/\/login/);
     expect(page.url()).toContain('/login');
   });
