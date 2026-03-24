@@ -2,9 +2,19 @@
 
 import { SHOP_CATEGORIES } from '@/data/shopping';
 import { useDailyTracking } from '@/hooks/useDailyTracking';
+import { useLanguage } from '@/contexts/LanguageContext';
+
+const CATEGORY_KEYS: Record<string, string> = {
+  Protein: 'shopping.category.protein',
+  Vegetables: 'shopping.category.vegetables',
+  Fruit: 'shopping.category.fruit',
+  'Grains & Carbs (GF)': 'shopping.category.grains',
+  'Pantry & Cooking': 'shopping.category.pantry',
+};
 
 export default function ShoppingList() {
   const { tracking, toggleShopItem } = useDailyTracking();
+  const { t } = useLanguage();
   const checked = tracking?.shopping_checked || {};
 
   return (
@@ -12,7 +22,7 @@ export default function ShoppingList() {
       {SHOP_CATEGORIES.map((cat) => (
         <div key={cat.name}>
           <div className="text-[11px] font-bold text-content-muted uppercase tracking-wider mt-3.5 first:mt-0 mb-1.5 pb-1.5 border-b border-surface-border">
-            {cat.name}
+            {t(CATEGORY_KEYS[cat.name] || cat.name)}
           </div>
           <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-1.5 mb-1">
             {cat.items.map((item, i) => {

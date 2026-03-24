@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function LoginPage() {
   const [tab, setTab] = useState<'signin' | 'signup' | 'forgot'>('signin');
@@ -14,6 +15,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const supabase = createClient();
+  const { t } = useLanguage();
 
   const handleSignIn = async () => {
     setError('');
@@ -61,7 +63,7 @@ export default function LoginPage() {
       setError(err.message);
       return;
     }
-    setMessage('Check your email for a confirmation link!');
+    setMessage(t('check_email_confirm'));
   };
 
   const handleForgotPassword = async () => {
@@ -79,7 +81,7 @@ export default function LoginPage() {
       setError(err.message);
       return;
     }
-    setMessage('Check your email for a password reset link!');
+    setMessage(t('check_email_reset'));
   };
 
   const inputClass =
@@ -96,25 +98,27 @@ export default function LoginPage() {
           <div className="w-16 h-16 bg-[#1B5E3B] rounded-2xl inline-flex items-center justify-center mb-3">
             <span className="text-3xl">🌿</span>
           </div>
-          <div className="text-xl font-extrabold text-content">The plan that transforms how you eat.</div>
-          <div className="text-xs text-content-muted mt-1">Your daily meal planner &mdash; gluten-free</div>
+          <div className="text-xl font-extrabold text-content">{t('app_name')}</div>
+          <div className="text-xs text-content-muted mt-1">
+            {t('app_tagline')} &mdash; {t('app_subtitle')}
+          </div>
         </div>
 
         {/* Tabs */}
         {tab !== 'forgot' && (
           <div className="flex bg-surface-bg rounded-lg p-0.5 mb-6">
-            {(['signin', 'signup'] as const).map((t) => (
+            {(['signin', 'signup'] as const).map((tabVal) => (
               <button
-                key={t}
+                key={tabVal}
                 onClick={() => {
-                  setTab(t);
+                  setTab(tabVal);
                   setError('');
                   setMessage('');
                 }}
                 className={`flex-1 py-2 border-none rounded-md text-[13px] font-bold cursor-pointer transition-all
-                  ${tab === t ? 'bg-brand-green text-white' : 'bg-transparent text-content-muted'}`}
+                  ${tab === tabVal ? 'bg-brand-green text-white' : 'bg-transparent text-content-muted'}`}
               >
-                {t === 'signin' ? 'Sign In' : 'Sign Up'}
+                {tabVal === 'signin' ? t('sign_in') : t('sign_up')}
               </button>
             ))}
           </div>
@@ -122,8 +126,8 @@ export default function LoginPage() {
 
         {tab === 'forgot' && (
           <div className="text-center mb-6">
-            <div className="text-lg font-bold text-content mb-1">Reset your password</div>
-            <div className="text-xs text-content-muted">Enter your email and we&apos;ll send you a reset link</div>
+            <div className="text-lg font-bold text-content mb-1">{t('send_reset_link')}</div>
+            <div className="text-xs text-content-muted">{t('check_email_reset')}</div>
           </div>
         )}
 
@@ -144,7 +148,7 @@ export default function LoginPage() {
           <>
             <div className="mb-3.5">
               <label className="text-[11px] font-bold text-content-muted uppercase tracking-wider block mb-1.5">
-                Email
+                {t('email')}
               </label>
               <input
                 type="email"
@@ -156,7 +160,7 @@ export default function LoginPage() {
             </div>
             <div className="mb-5">
               <label className="text-[11px] font-bold text-content-muted uppercase tracking-wider block mb-1.5">
-                Password
+                {t('password')}
               </label>
               <input
                 type="password"
@@ -171,7 +175,7 @@ export default function LoginPage() {
               disabled={loading}
               className="w-full py-3 bg-brand-green text-white border-none rounded-lg text-[15px] font-bold cursor-pointer hover:bg-brand-green-dark transition-colors disabled:opacity-50"
             >
-              {loading ? 'Signing in...' : 'Sign In →'}
+              {loading ? `${t('common.loading')}` : `${t('sign_in')} →`}
             </button>
             <div className="text-center mt-3.5 text-xs text-content-muted">
               <button
@@ -182,10 +186,10 @@ export default function LoginPage() {
                 }}
                 className="text-brand-green font-bold border-none bg-transparent cursor-pointer"
               >
-                Forgot password?
+                {t('forgot_password')}
               </button>
               {' · '}
-              Don&apos;t have an account?{' '}
+              {t('no_account')}{' '}
               <button
                 onClick={() => {
                   setTab('signup');
@@ -194,7 +198,7 @@ export default function LoginPage() {
                 }}
                 className="text-brand-green font-bold border-none bg-transparent cursor-pointer"
               >
-                Sign Up
+                {t('sign_up')}
               </button>
             </div>
           </>
@@ -205,7 +209,7 @@ export default function LoginPage() {
           <>
             <div className="mb-3.5">
               <label className="text-[11px] font-bold text-content-muted uppercase tracking-wider block mb-1.5">
-                Full Name
+                {t('full_name')}
               </label>
               <input
                 type="text"
@@ -217,7 +221,7 @@ export default function LoginPage() {
             </div>
             <div className="mb-3.5">
               <label className="text-[11px] font-bold text-content-muted uppercase tracking-wider block mb-1.5">
-                Email
+                {t('email')}
               </label>
               <input
                 type="email"
@@ -229,7 +233,7 @@ export default function LoginPage() {
             </div>
             <div className="mb-5">
               <label className="text-[11px] font-bold text-content-muted uppercase tracking-wider block mb-1.5">
-                Password
+                {t('password')}
               </label>
               <input
                 type="password"
@@ -244,10 +248,10 @@ export default function LoginPage() {
               disabled={loading}
               className="w-full py-3 bg-brand-green text-white border-none rounded-lg text-[15px] font-bold cursor-pointer hover:bg-brand-green-dark transition-colors disabled:opacity-50"
             >
-              {loading ? 'Creating account...' : 'Create Account →'}
+              {loading ? `${t('common.loading')}` : `${t('create_account')} →`}
             </button>
             <div className="text-center mt-3.5 text-xs text-content-muted">
-              Already have an account?{' '}
+              {t('have_account')}{' '}
               <button
                 onClick={() => {
                   setTab('signin');
@@ -256,7 +260,7 @@ export default function LoginPage() {
                 }}
                 className="text-brand-green font-bold border-none bg-transparent cursor-pointer"
               >
-                Sign In
+                {t('sign_in')}
               </button>
             </div>
           </>
@@ -267,7 +271,7 @@ export default function LoginPage() {
           <>
             <div className="mb-5">
               <label className="text-[11px] font-bold text-content-muted uppercase tracking-wider block mb-1.5">
-                Email
+                {t('email')}
               </label>
               <input
                 type="email"
@@ -282,7 +286,7 @@ export default function LoginPage() {
               disabled={loading}
               className="w-full py-3 bg-brand-green text-white border-none rounded-lg text-[15px] font-bold cursor-pointer hover:bg-brand-green-dark transition-colors disabled:opacity-50"
             >
-              {loading ? 'Sending...' : 'Send Reset Link →'}
+              {loading ? `${t('common.loading')}` : `${t('send_reset_link')} →`}
             </button>
             <div className="text-center mt-3.5">
               <button
@@ -293,7 +297,7 @@ export default function LoginPage() {
                 }}
                 className="text-xs text-content-muted border-none bg-transparent cursor-pointer"
               >
-                Back to Sign In
+                {t('back_to_signin')}
               </button>
             </div>
           </>

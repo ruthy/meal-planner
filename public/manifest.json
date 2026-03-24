@@ -1,6 +1,6 @@
 {
-  "name": "Daily Meal Planner — The plan that transforms how you eat",
-  "short_name": "MealPlan",
+  "name": "DailyBite — The plan that transforms how you eat",
+  "short_name": "DailyBite",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#F7F7F5",

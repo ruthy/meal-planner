@@ -2,9 +2,11 @@
 
 import { GLASSES } from '@/data/water';
 import { useDailyTracking } from '@/hooks/useDailyTracking';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function WaterTracker() {
   const { tracking, toggleGlass, resetWater } = useDailyTracking();
+  const { t } = useLanguage();
   const glasses = tracking?.water_glasses || [false, false, false, false, false, false, false, false];
   const count = glasses.filter(Boolean).length;
   const pct = (count / 8) * 100;
@@ -13,13 +15,16 @@ export default function WaterTracker() {
     <div>
       <div className="flex items-center justify-between mb-1.5">
         <div className="text-[13px] font-bold text-content">
-          Progress: <span className="text-section-blue">{count} / 8 glasses</span>
+          {t('water.progress')}:{' '}
+          <span className="text-section-blue">
+            {count} / 8 {t('water.glasses')}
+          </span>
         </div>
         <button
           onClick={resetWater}
           className="text-[11px] px-3 py-1 bg-surface-bg border border-surface-border rounded-full cursor-pointer text-content-muted hover:border-section-blue transition-colors"
         >
-          Reset
+          {t('water.reset')}
         </button>
       </div>
 

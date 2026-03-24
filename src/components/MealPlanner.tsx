@@ -3,8 +3,11 @@
 import { useMemo, useState } from 'react';
 import { MEAL_DAYS, BASE_CALORIES } from '@/data/meals';
 import { scaleMeals } from '@/lib/calculator';
-import { getTodayDayIndex, DAY_LABELS } from '@/lib/dates';
+import { getTodayDayIndex } from '@/lib/dates';
 import { useDailyTracking } from '@/hooks/useDailyTracking';
+import { useLanguage } from '@/contexts/LanguageContext';
+
+const DAY_KEYS = ['day.mon', 'day.tue', 'day.wed', 'day.thu', 'day.fri', 'day.sat', 'day.sun'] as const;
 
 interface MealPlannerProps {
   targetCalories: number;
@@ -14,6 +17,7 @@ export default function MealPlanner({ targetCalories }: MealPlannerProps) {
   const [currentDay, setCurrentDay] = useState(() => getTodayDayIndex());
   const [openMeals, setOpenMeals] = useState<Record<number, boolean>>({});
   const { tracking, toggleMealDone } = useDailyTracking();
+  const { t } = useLanguage();
 
   const days = useMemo(() => scaleMeals(MEAL_DAYS, targetCalories, BASE_CALORIES), [targetCalories]);
   const day = days[currentDay];
@@ -29,10 +33,10 @@ export default function MealPlanner({ targetCalories }: MealPlannerProps) {
       {/* Macro summary */}
       <div className="grid grid-cols-4 max-[480px]:grid-cols-2 gap-2 mb-4">
         {[
-          { value: targetCalories.toLocaleString(), label: 'Cal / Day', green: true },
-          { value: `~${Math.round((105 * targetCalories) / BASE_CALORIES)}g`, label: 'Protein' },
-          { value: `~${Math.round((65 * targetCalories) / BASE_CALORIES)}g`, label: 'Carbs' },
-          { value: `~${Math.round((38 * targetCalories) / BASE_CALORIES)}g`, label: 'Fat' },
+          { value: targetCalories.toLocaleString(), label: t('meals.cal_day'), green: true },
+          { value: `~${Math.round((105 * targetCalories) / BASE_CALORIES)}g`, label: t('meals.protein') },
+          { value: `~${Math.round((65 * targetCalories) / BASE_CALORIES)}g`, label: t('meals.carbs') },
+          { value: `~${Math.round((38 * targetCalories) / BASE_CALORIES)}g`, label: t('meals.fat') },
         ].map((m) => (
           <div key={m.label} className="bg-white border border-surface-border rounded-md p-3 text-center">
             <div className={`text-lg font-bold ${m.green ? 'text-brand-green' : 'text-content'}`}>{m.value}</div>
@@ -43,9 +47,9 @@ export default function MealPlanner({ targetCalories }: MealPlannerProps) {
 
       {/* Day strip */}
       <div className="flex gap-1.5 mb-3.5 flex-wrap">
-        {DAY_LABELS.map((label, i) => (
+        {DAY_KEYS.map((key, i) => (
           <button
-            key={label}
+            key={key}
             onClick={() => {
               setCurrentDay(i);
               setOpenMeals({});
@@ -57,7 +61,7 @@ export default function MealPlanner({ targetCalories }: MealPlannerProps) {
                   : 'bg-white border-surface-border text-content-muted hover:border-brand-green hover:text-brand-green'
               }`}
           >
-            {label}
+            {t(key)}
           </button>
         ))}
       </div>
@@ -67,11 +71,14 @@ export default function MealPlanner({ targetCalories }: MealPlannerProps) {
         {day.label} &mdash; {day.theme}
       </div>
       <div className="flex justify-between text-[11px] mb-0.5 text-content-muted">
-        <span>0 cal</span>
+        <span>0 {t('common.cal')}</span>
         <span className="font-semibold" style={{ color: over ? '#C0392B' : '#1D9E75' }}>
-          {totalCal} / {targetCalories.toLocaleString()} cal{over && ` — +${totalCal - targetCalories} cal`}
+          {totalCal} / {targetCalories.toLocaleString()} {t('common.cal')}
+          {over && ` — +${totalCal - targetCalories} ${t('common.cal')}`}
         </span>
-        <span>{targetCalories.toLocaleString()} cal</span>
+        <span>
+          {targetCalories.toLocaleString()} {t('common.cal')}
+        </span>
       </div>
       <div className="bg-surface-bg rounded-full h-[7px] mb-3 overflow-hidden border border-surface-border">
         <div
@@ -106,7 +113,8 @@ export default function MealPlanner({ targetCalories }: MealPlannerProps) {
                   </span>
                 </div>
                 <div className="text-[11px] text-content-muted mt-0.5">
-                  Protein {meal.p}g &middot; Carbs {meal.c}g &middot; Fat {meal.f}g &middot; {meal.items.length} items
+                  {t('meals.protein')} {meal.p}g &middot; {t('meals.carbs')} {meal.c}g &middot; {t('meals.fat')}{' '}
+                  {meal.f}g &middot; {meal.items.length} items
                 </div>
               </div>
               <button
@@ -120,7 +128,7 @@ export default function MealPlanner({ targetCalories }: MealPlannerProps) {
                 {isDone ? '✓' : '○'}
               </button>
               <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-brand-green-light text-brand-green-dark flex-shrink-0 ml-1">
-                {meal.cal} cal
+                {meal.cal} {t('common.cal')}
               </span>
               <span
                 className={`text-[11px] text-content-muted transition-transform flex-shrink-0 ml-1 ${isOpen ? 'rotate-180' : ''}`}
@@ -135,22 +143,22 @@ export default function MealPlanner({ targetCalories }: MealPlannerProps) {
                   <thead>
                     <tr>
                       <th className="text-[10px] font-semibold text-content-muted uppercase tracking-wider px-3.5 py-2 bg-surface-bg text-left border-b border-surface-border">
-                        Ingredient
+                        {t('meals.ingredient')}
                       </th>
                       <th className="text-[10px] font-semibold text-content-muted uppercase tracking-wider px-3.5 py-2 bg-surface-bg text-right border-b border-surface-border">
                         G
                       </th>
                       <th className="text-[10px] font-semibold text-content-muted uppercase tracking-wider px-3.5 py-2 bg-surface-bg text-right border-b border-surface-border max-[480px]:hidden">
-                        Protein
+                        {t('meals.protein')}
                       </th>
                       <th className="text-[10px] font-semibold text-content-muted uppercase tracking-wider px-3.5 py-2 bg-surface-bg text-right border-b border-surface-border max-[480px]:hidden">
-                        Carbs
+                        {t('meals.carbs')}
                       </th>
                       <th className="text-[10px] font-semibold text-content-muted uppercase tracking-wider px-3.5 py-2 bg-surface-bg text-right border-b border-surface-border">
-                        Fat
+                        {t('meals.fat')}
                       </th>
                       <th className="text-[10px] font-semibold text-content-muted uppercase tracking-wider px-3.5 py-2 bg-surface-bg text-right border-b border-surface-border">
-                        Cal
+                        {t('common.cal')}
                       </th>
                     </tr>
                   </thead>
@@ -182,7 +190,7 @@ export default function MealPlanner({ targetCalories }: MealPlannerProps) {
                     ))}
                     <tr className="bg-surface-bg">
                       <td className="text-[11px] font-bold text-content px-3.5 py-1.5 border-t border-surface-border">
-                        Meal total
+                        {t('meals.meal_total')}
                       </td>
                       <td className="text-[11px] font-bold text-brand-green px-3.5 py-1.5 border-t border-surface-border text-right"></td>
                       <td className="text-[11px] font-bold text-brand-green px-3.5 py-1.5 border-t border-surface-border text-right max-[480px]:hidden">
@@ -195,7 +203,7 @@ export default function MealPlanner({ targetCalories }: MealPlannerProps) {
                         {meal.f}g
                       </td>
                       <td className="text-[11px] font-bold text-brand-green px-3.5 py-1.5 border-t border-surface-border text-right">
-                        {meal.cal} cal
+                        {meal.cal} {t('common.cal')}
                       </td>
                     </tr>
                   </tbody>
@@ -209,20 +217,26 @@ export default function MealPlanner({ targetCalories }: MealPlannerProps) {
       {/* Day total */}
       <div className="flex justify-between items-center flex-wrap gap-1.5 px-3.5 py-2.5 bg-brand-green-light border-t border-[#9FE1CB] rounded-b-lg -mt-0.5">
         <span className="text-[13px] font-bold text-brand-green-dark">
-          Day total: {totalCal} / {targetCalories.toLocaleString()} cal
+          {t('meals.day_total')}: {totalCal} / {targetCalories.toLocaleString()} {t('common.cal')}
         </span>
         <div className="flex gap-3">
-          <span className="text-[11px] text-brand-green-mid font-medium">Protein {totalP}g</span>
-          <span className="text-[11px] text-brand-green-mid font-medium">Carbs {totalC}g</span>
-          <span className="text-[11px] text-brand-green-mid font-medium">Fat {totalF}g</span>
+          <span className="text-[11px] text-brand-green-mid font-medium">
+            {t('meals.protein')} {totalP}g
+          </span>
+          <span className="text-[11px] text-brand-green-mid font-medium">
+            {t('meals.carbs')} {totalC}g
+          </span>
+          <span className="text-[11px] text-brand-green-mid font-medium">
+            {t('meals.fat')} {totalF}g
+          </span>
         </div>
       </div>
 
       {/* GF note */}
       <div className="bg-accent-blue-light border border-[#B5D4F4] rounded-lg p-3 mt-3 text-xs text-accent-blue-dark leading-relaxed">
-        <strong>Gluten-free rules:</strong> All ingredients are naturally GF. Use tamari instead of soy sauce. Choose
-        certified GF protein powder (whey isolate or pea protein). Always check cottage cheese and yogurt labels &mdash;
-        choose plain, unflavoured. Use a kitchen scale for the first 2 weeks.
+        <strong>{t('meals.gf_rules')}:</strong> All ingredients are naturally GF. Use tamari instead of soy sauce.
+        Choose certified GF protein powder (whey isolate or pea protein). Always check cottage cheese and yogurt labels
+        &mdash; choose plain, unflavoured. Use a kitchen scale for the first 2 weeks.
       </div>
     </div>
   );

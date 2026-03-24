@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function UpdatePasswordPage() {
   const [password, setPassword] = useState('');
@@ -11,6 +12,7 @@ export default function UpdatePasswordPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const supabase = createClient();
+  const { t } = useLanguage();
 
   const handleUpdate = async () => {
     setError('');
@@ -42,8 +44,8 @@ export default function UpdatePasswordPage() {
     >
       <div className="bg-white rounded-2xl p-8 w-full max-w-[380px] shadow-2xl">
         <div className="text-center mb-6">
-          <div className="text-xl font-extrabold text-content">Set New Password</div>
-          <div className="text-xs text-content-muted mt-1">Choose a new password for your account</div>
+          <div className="text-xl font-extrabold text-content">{t('update_password')}</div>
+          <div className="text-xs text-content-muted mt-1">{t('app_tagline')}</div>
         </div>
 
         {error && (
@@ -54,7 +56,7 @@ export default function UpdatePasswordPage() {
 
         <div className="mb-3.5">
           <label className="text-[11px] font-bold text-content-muted uppercase tracking-wider block mb-1.5">
-            New Password
+            {t('password')}
           </label>
           <input
             type="password"
@@ -66,7 +68,7 @@ export default function UpdatePasswordPage() {
         </div>
         <div className="mb-5">
           <label className="text-[11px] font-bold text-content-muted uppercase tracking-wider block mb-1.5">
-            Confirm Password
+            {t('confirm_password')}
           </label>
           <input
             type="password"
@@ -81,7 +83,7 @@ export default function UpdatePasswordPage() {
           disabled={loading}
           className="w-full py-3 bg-brand-green text-white border-none rounded-lg text-[15px] font-bold cursor-pointer hover:bg-brand-green-dark transition-colors disabled:opacity-50"
         >
-          {loading ? 'Updating...' : 'Update Password →'}
+          {loading ? t('common.loading') : `${t('update_password')} \u2192`}
         </button>
       </div>
     </div>

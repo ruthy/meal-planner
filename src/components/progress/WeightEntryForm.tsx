@@ -3,9 +3,11 @@
 import { useState } from 'react';
 import { useWeightLog } from '@/hooks/useWeightLog';
 import { toDateString } from '@/lib/dates';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function WeightEntryForm() {
   const { addEntry } = useWeightLog();
+  const { t } = useLanguage();
   const [weight, setWeight] = useState('');
   const [saved, setSaved] = useState(false);
 
@@ -24,7 +26,7 @@ export default function WeightEntryForm() {
         type="number"
         value={weight}
         onChange={(e) => setWeight(e.target.value)}
-        placeholder="Today's weight (kg)"
+        placeholder={t('progress.todays_weight')}
         className="flex-1 px-3 py-2 border border-surface-border rounded-md text-xs text-content bg-white outline-none focus:border-brand-green"
         step="0.1"
       />
@@ -32,7 +34,7 @@ export default function WeightEntryForm() {
         onClick={handleSave}
         className="px-4 py-2 bg-brand-green text-white border-none rounded-md text-xs font-semibold cursor-pointer hover:bg-brand-green-mid transition-colors"
       >
-        {saved ? '✓ Saved' : 'Log'}
+        {saved ? `✓ ${t('progress.saved')}` : t('progress.log')}
       </button>
     </div>
   );

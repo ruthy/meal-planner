@@ -1,6 +1,11 @@
+'use client';
+
 import { RULES } from '@/data/rules';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function KeyRules() {
+  const { t } = useLanguage();
+
   return (
     <div>
       {RULES.map((rule, i) => (
@@ -12,8 +17,8 @@ export default function KeyRules() {
         >
           <span className="text-xl flex-shrink-0">{rule.icon}</span>
           <div>
-            <div className="text-[13px] font-bold text-content mb-0.5">{rule.title}</div>
-            <div className="text-xs text-content-muted leading-relaxed">{rule.description}</div>
+            <div className="text-[13px] font-bold text-content mb-0.5">{t(`rules.${i + 1}.title`)}</div>
+            <div className="text-xs text-content-muted leading-relaxed">{t(`rules.${i + 1}.desc`)}</div>
           </div>
         </div>
       ))}

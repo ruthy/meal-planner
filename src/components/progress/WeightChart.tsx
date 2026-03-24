@@ -2,6 +2,7 @@
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 import { useWeightLog } from '@/hooks/useWeightLog';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface WeightChartProps {
   goalWeight?: number;
@@ -9,8 +10,9 @@ interface WeightChartProps {
 
 export default function WeightChart({ goalWeight }: WeightChartProps) {
   const { entries, loading } = useWeightLog();
+  const { t } = useLanguage();
 
-  if (loading) return <div className="text-xs text-content-muted">Loading...</div>;
+  if (loading) return <div className="text-xs text-content-muted">{t('common.loading')}</div>;
   if (entries.length === 0) return null;
 
   const data = entries.map((e) => ({
@@ -20,7 +22,9 @@ export default function WeightChart({ goalWeight }: WeightChartProps) {
 
   return (
     <div className="bg-white border border-surface-border rounded-md p-3">
-      <h4 className="text-[11px] font-bold text-content-muted uppercase tracking-wider mb-3">Weight Trend</h4>
+      <h4 className="text-[11px] font-bold text-content-muted uppercase tracking-wider mb-3">
+        {t('progress.weight_trend')}
+      </h4>
       <ResponsiveContainer width="100%" height={180}>
         <LineChart data={data}>
           <CartesianGrid strokeDasharray="3 3" stroke="#E0E0DC" />

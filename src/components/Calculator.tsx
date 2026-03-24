@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { calculate } from '@/lib/calculator';
 import { useCalculatorSettings } from '@/hooks/useCalculatorSettings';
+import { useLanguage } from '@/contexts/LanguageContext';
 import type { CalculatorResult } from '@/types';
 
 interface CalculatorProps {
@@ -11,6 +12,7 @@ interface CalculatorProps {
 
 export default function Calculator({ onTargetChange }: CalculatorProps) {
   const { settings, saveSettings } = useCalculatorSettings();
+  const { t } = useLanguage();
   const [gender, setGender] = useState<'f' | 'm'>(settings.gender);
   const [unit, setUnit] = useState<'metric' | 'imperial'>(settings.unit_system);
   const [age, setAge] = useState(settings.age?.toString() || '');
@@ -61,10 +63,8 @@ export default function Calculator({ onTargetChange }: CalculatorProps) {
   return (
     <div>
       <div className="bg-brand-green p-4 text-white">
-        <h2 className="text-[17px] font-bold mb-1 text-white">Daily calorie calculator</h2>
-        <p className="text-xs opacity-85 text-white">
-          Find your exact daily calories based on age, height, weight &amp; activity
-        </p>
+        <h2 className="text-[17px] font-bold mb-1 text-white">{t('calc.header')}</h2>
+        <p className="text-xs opacity-85 text-white">{t('calc.description')}</p>
       </div>
       <div className="p-5">
         {/* Gender */}
@@ -76,7 +76,7 @@ export default function Calculator({ onTargetChange }: CalculatorProps) {
               className={`flex-1 py-2.5 border-2 rounded-md text-[13px] font-semibold cursor-pointer transition-all flex items-center justify-center gap-1.5
                 ${gender === g ? 'border-brand-green bg-brand-green-light text-brand-green-dark' : 'border-surface-border bg-white text-content-muted hover:border-brand-green hover:text-brand-green'}`}
             >
-              {g === 'f' ? '♀ Woman' : '♂ Man'}
+              {g === 'f' ? `♀ ${t('calc.woman')}` : `♂ ${t('calc.man')}`}
             </button>
           ))}
         </div>
@@ -90,7 +90,7 @@ export default function Calculator({ onTargetChange }: CalculatorProps) {
               className={`px-4 py-1.5 text-xs font-semibold cursor-pointer border-none transition-all
                 ${unit === u ? 'bg-brand-green text-white' : 'bg-white text-content-muted'}`}
             >
-              {u === 'metric' ? 'Metric (kg / cm)' : 'Imperial (lbs / ft)'}
+              {u === 'metric' ? t('calc.metric') : t('calc.imperial')}
             </button>
           ))}
         </div>
@@ -98,7 +98,9 @@ export default function Calculator({ onTargetChange }: CalculatorProps) {
         {/* Form fields */}
         <div className="grid grid-cols-2 gap-3.5 mb-4">
           <div className="flex flex-col gap-1.5">
-            <label className="text-[11px] font-semibold text-content-muted uppercase tracking-wider">Age (years)</label>
+            <label className="text-[11px] font-semibold text-content-muted uppercase tracking-wider">
+              {t('calc.age')}
+            </label>
             <input
               type="number"
               value={age}
@@ -109,7 +111,7 @@ export default function Calculator({ onTargetChange }: CalculatorProps) {
           </div>
           <div className="flex flex-col gap-1.5">
             <label className="text-[11px] font-semibold text-content-muted uppercase tracking-wider">
-              {unit === 'metric' ? 'Weight (kg)' : 'Weight (lbs)'}
+              {unit === 'metric' ? t('calc.weight_kg') : t('calc.weight_lbs')}
             </label>
             <input
               type="number"
@@ -122,7 +124,7 @@ export default function Calculator({ onTargetChange }: CalculatorProps) {
           {unit === 'metric' ? (
             <div className="flex flex-col gap-1.5">
               <label className="text-[11px] font-semibold text-content-muted uppercase tracking-wider">
-                Height (cm)
+                {t('calc.height_cm')}
               </label>
               <input
                 type="number"
@@ -135,7 +137,7 @@ export default function Calculator({ onTargetChange }: CalculatorProps) {
           ) : (
             <div className="flex flex-col gap-1.5">
               <label className="text-[11px] font-semibold text-content-muted uppercase tracking-wider">
-                Height (ft / in)
+                {t('calc.height_ft')}
               </label>
               <input
                 type="number"
@@ -158,18 +160,18 @@ export default function Calculator({ onTargetChange }: CalculatorProps) {
         {/* Activity */}
         <div className="flex flex-col gap-1.5 mb-4">
           <label className="text-[11px] font-semibold text-content-muted uppercase tracking-wider">
-            Activity level
+            {t('calc.activity')}
           </label>
           <select
             value={activity}
             onChange={(e) => setActivity(e.target.value)}
             className="px-3 py-2 border border-surface-border rounded-md text-[13px] text-content bg-white outline-none focus:border-brand-green"
           >
-            <option value="1.2">Sedentary &mdash; little or no exercise</option>
-            <option value="1.375">Lightly active &mdash; exercise 1&ndash;3 days/week</option>
-            <option value="1.55">Moderately active &mdash; exercise 3&ndash;5 days/week</option>
-            <option value="1.725">Very active &mdash; exercise 6&ndash;7 days/week</option>
-            <option value="1.9">Extra active &mdash; physical job + exercise</option>
+            <option value="1.2">{t('calc.activity_sedentary')}</option>
+            <option value="1.375">{t('calc.activity_light')}</option>
+            <option value="1.55">{t('calc.activity_moderate')}</option>
+            <option value="1.725">{t('calc.activity_very')}</option>
+            <option value="1.9">{t('calc.activity_extra')}</option>
           </select>
         </div>
 
@@ -177,7 +179,7 @@ export default function Calculator({ onTargetChange }: CalculatorProps) {
           onClick={handleCalculate}
           className="w-full py-3 bg-brand-green text-white border-none rounded-md text-sm font-bold cursor-pointer hover:bg-brand-green-mid transition-colors mt-1"
         >
-          Calculate &amp; Adjust My Meal Plan
+          {t('calc.calculate_btn')}
         </button>
 
         {/* Result */}
@@ -185,22 +187,28 @@ export default function Calculator({ onTargetChange }: CalculatorProps) {
           <div className="mt-5 border-t border-surface-border pt-4">
             <div className="bg-brand-green-light border border-[#9FE1CB] rounded-lg p-4 mb-3.5 text-center">
               <div className="text-[40px] font-extrabold text-brand-green-dark leading-none">{result.tdee}</div>
-              <div className="text-[13px] text-brand-green-mid mt-1">calories/day to maintain weight</div>
-              <div className="text-[11px] text-brand-green-mid mt-1.5">Based on Mifflin-St Jeor formula</div>
+              <div className="text-[13px] text-brand-green-mid mt-1">
+                {t('calc.maintain')} — {t('calc.calories_day')}
+              </div>
+              <div className="text-[11px] text-brand-green-mid mt-1.5">{t('calc.based_on')}</div>
             </div>
 
             <div className="grid grid-cols-3 gap-2 mb-3.5">
               <div className="bg-white border border-surface-border rounded-md p-3 text-center">
                 <div className="text-lg font-bold text-content">{result.tdee}</div>
-                <div className="text-[10px] text-content-muted uppercase tracking-wider mt-0.5">Maintain</div>
+                <div className="text-[10px] text-content-muted uppercase tracking-wider mt-0.5">
+                  {t('calc.maintain')}
+                </div>
               </div>
               <div className="bg-brand-green-light border border-brand-green rounded-md p-3 text-center">
                 <div className="text-lg font-bold text-brand-green-dark">{result.loseTarget}</div>
-                <div className="text-[10px] text-brand-green-dark uppercase tracking-wider mt-0.5">Lose 1 kg/wk</div>
+                <div className="text-[10px] text-brand-green-dark uppercase tracking-wider mt-0.5">
+                  {t('calc.lose')}
+                </div>
               </div>
               <div className="bg-white border border-surface-border rounded-md p-3 text-center">
                 <div className="text-lg font-bold text-content">{result.tdee + 500}</div>
-                <div className="text-[10px] text-content-muted uppercase tracking-wider mt-0.5">Gain</div>
+                <div className="text-[10px] text-content-muted uppercase tracking-wider mt-0.5">{t('calc.gain')}</div>
               </div>
             </div>
 
@@ -218,12 +226,12 @@ export default function Calculator({ onTargetChange }: CalculatorProps) {
             {/* Macros */}
             <div className="bg-surface-bg rounded-md p-3.5 mb-3.5">
               <h4 className="text-[11px] font-bold text-content-muted uppercase tracking-wider mb-2.5">
-                Recommended macros for {result.loseTarget} cal/day
+                {t('calc.recommended_macros')} — {result.loseTarget} {t('calc.calories_day')}
               </h4>
               {[
-                { label: 'Protein', value: result.macros.protein, color: '#E74C3C' },
-                { label: 'Carbs', value: result.macros.carbs, color: '#F39C12' },
-                { label: 'Fat', value: result.macros.fat, color: '#3498DB' },
+                { label: t('meals.protein'), value: result.macros.protein, color: '#E74C3C' },
+                { label: t('meals.carbs'), value: result.macros.carbs, color: '#F39C12' },
+                { label: t('meals.fat'), value: result.macros.fat, color: '#3498DB' },
               ].map((m) => {
                 const total = result.macros.protein + result.macros.carbs + result.macros.fat;
                 return (
@@ -242,13 +250,14 @@ export default function Calculator({ onTargetChange }: CalculatorProps) {
             </div>
 
             <div className="bg-accent-amber-light border border-[#FAC775] rounded-md p-3 text-xs text-accent-amber-dark leading-relaxed">
-              <strong>Your personalised target:</strong> Based on your stats,{' '}
-              <strong>{result.loseTarget} cal/day</strong> creates a 1 kg/week weight loss.
+              <strong>{t('calc.your_target')}:</strong> {result.loseTarget} {t('calc.calories_day')}
             </div>
 
             <div className="bg-[#065F46] text-white p-3 rounded-md mt-3 text-[13px] font-semibold text-center">
-              Your meal plan has been adjusted to <strong>{result.loseTarget.toLocaleString()} calories/day</strong>{' '}
-              &mdash; scroll down to see your personalised meals!
+              {t('calc.plan_adjusted')} —{' '}
+              <strong>
+                {result.loseTarget.toLocaleString()} {t('calc.calories_day')}
+              </strong>
             </div>
           </div>
         )}
