@@ -13,7 +13,7 @@ interface CalculatorProps {
 export default function Calculator({ onTargetChange }: CalculatorProps) {
   const { settings, saveSettings } = useCalculatorSettings();
   const { t } = useLanguage();
-  const [gender, setGender] = useState<'f' | 'm'>(settings.gender);
+  const gender = 'f' as const;
   const [unit, setUnit] = useState<'metric' | 'imperial'>(settings.unit_system);
   const [age, setAge] = useState(settings.age?.toString() || '');
   const [weight, setWeight] = useState(settings.weight_kg?.toString() || '');
@@ -67,20 +67,6 @@ export default function Calculator({ onTargetChange }: CalculatorProps) {
         <p className="text-xs opacity-85 text-white">{t('calc.description')}</p>
       </div>
       <div className="p-5">
-        {/* Gender */}
-        <div className="flex gap-2.5 mb-4">
-          {(['f', 'm'] as const).map((g) => (
-            <button
-              key={g}
-              onClick={() => setGender(g)}
-              className={`flex-1 py-2.5 border-2 rounded-md text-[13px] font-semibold cursor-pointer transition-all flex items-center justify-center gap-1.5
-                ${gender === g ? 'border-brand-green bg-brand-green-light text-brand-green-dark' : 'border-surface-border bg-white text-content-muted hover:border-brand-green hover:text-brand-green'}`}
-            >
-              {g === 'f' ? `♀ ${t('calc.woman')}` : `♂ ${t('calc.man')}`}
-            </button>
-          ))}
-        </div>
-
         {/* Units */}
         <div className="flex mb-4 border border-surface-border rounded-md overflow-hidden w-fit">
           {(['metric', 'imperial'] as const).map((u) => (

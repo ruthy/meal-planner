@@ -65,11 +65,10 @@ describe('Component smoke tests', () => {
     expect(screen.getByText(/Low impact/)).toBeInTheDocument();
   });
 
-  it('Calculator renders form with "Woman" and "Man" buttons', () => {
+  it('Calculator renders form with Calculate button', () => {
     renderWithProviders(<Calculator onTargetChange={() => {}} />);
-    expect(screen.getByText(/Woman/)).toBeInTheDocument();
-    expect(screen.getByText(/Man/)).toBeInTheDocument();
     expect(screen.getByText('Calculate')).toBeInTheDocument();
+    expect(screen.getByText(/Age/)).toBeInTheDocument();
   });
 
   it('MetaBoostShots renders shot name', () => {
