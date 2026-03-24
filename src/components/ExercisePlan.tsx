@@ -48,6 +48,16 @@ export default function ExercisePlan() {
             <div className="text-[13px] font-semibold text-content">{move.name}</div>
             <div className="text-[11px] text-content-muted">{move.description}</div>
           </div>
+          {move.videoUrl && (
+            <a
+              href={move.videoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 px-2.5 py-1 bg-red-50 border border-red-200 rounded-full text-[10px] font-semibold text-red-600 hover:bg-red-100 transition-colors flex-shrink-0"
+            >
+              <span>&#9654;</span> Video
+            </a>
+          )}
         </div>
       ))}
 

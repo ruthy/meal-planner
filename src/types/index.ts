@@ -39,6 +39,7 @@ export interface Shot {
 export interface ExerciseMove {
   name: string;
   description: string;
+  videoUrl?: string;
 }
 
 export interface ExercisePlan {
