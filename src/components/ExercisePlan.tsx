@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { YOGA_30_DAYS } from '@/data/exercises';
-import { EXERCISE_39_DAYS } from '@/data/exercises39';
+import { EXERCISE_30_DAYS } from '@/data/exercises30';
 import { useDailyTracking } from '@/hooks/useDailyTracking';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-type ProgramMode = 'yoga30' | '39day';
+type ProgramMode = 'yoga' | 'fitness';
 
 function getYogaWeek(dayIndex: number): { week: number; name: string } {
   if (dayIndex < 7) return { week: 1, name: 'yoga30.week.1.name' };
@@ -17,9 +17,9 @@ function getYogaWeek(dayIndex: number): { week: number; name: string } {
 }
 
 function getPhase(dayIndex: number): { phase: number; name: string } {
-  if (dayIndex < 13) return { phase: 1, name: 'exercise39.phase.1.name' };
-  if (dayIndex < 26) return { phase: 2, name: 'exercise39.phase.2.name' };
-  return { phase: 3, name: 'exercise39.phase.3.name' };
+  if (dayIndex < 10) return { phase: 1, name: 'exercise30.phase.1.name' };
+  if (dayIndex < 20) return { phase: 2, name: 'exercise30.phase.2.name' };
+  return { phase: 3, name: 'exercise30.phase.3.name' };
 }
 
 const YOGA_WEEK_COLORS = {
@@ -73,7 +73,7 @@ const EXERCISE_TYPE_KEYS: Record<string, string> = {
 };
 
 export default function ExercisePlan() {
-  const [mode, setMode] = useState<ProgramMode>('yoga30');
+  const [mode, setMode] = useState<ProgramMode>('yoga');
   const [currentYoga, setCurrentYoga] = useState(() => {
     if (typeof window !== 'undefined') {
       try {
@@ -88,13 +88,13 @@ export default function ExercisePlan() {
     }
     return 0;
   });
-  const [current39, setCurrent39] = useState(() => {
+  const [currentFit, setCurrentFit] = useState(() => {
     if (typeof window !== 'undefined') {
       try {
-        const saved = localStorage.getItem('exercise39_current_day');
+        const saved = localStorage.getItem('exercise30_current_day');
         if (saved !== null) {
           const parsed = parseInt(saved, 10);
-          if (!isNaN(parsed) && parsed >= 0 && parsed < 39) return parsed;
+          if (!isNaN(parsed) && parsed >= 0 && parsed < 30) return parsed;
         }
       } catch {
         // localStorage unavailable
@@ -118,15 +118,15 @@ export default function ExercisePlan() {
   // Persist 39-day progress
   useEffect(() => {
     try {
-      localStorage.setItem('exercise39_current_day', String(current39));
+      localStorage.setItem('exercise30_current_day', String(currentFit));
     } catch {
       // localStorage unavailable
     }
-  }, [current39]);
+  }, [currentFit]);
 
-  const plan = mode === 'yoga30' ? YOGA_30_DAYS[currentYoga] : EXERCISE_39_DAYS[current39];
+  const plan = mode === 'yoga' ? YOGA_30_DAYS[currentYoga] : EXERCISE_30_DAYS[currentFit];
   const { week: yogaWeek, name: yogaWeekName } = getYogaWeek(currentYoga);
-  const { phase, name: phaseName } = getPhase(current39);
+  const { phase, name: phaseName } = getPhase(currentFit);
 
   return (
     <div>
@@ -134,35 +134,35 @@ export default function ExercisePlan() {
       <div className="flex gap-2 mb-3">
         <button
           onClick={() => {
-            setMode('yoga30');
+            setMode('yoga');
             setActiveVideo(null);
           }}
           className={`flex-1 px-3 py-2 rounded-md text-xs font-semibold border cursor-pointer transition-all
             ${
-              mode === 'yoga30'
+              mode === 'yoga'
                 ? 'bg-brand-green text-white border-brand-green'
                 : 'bg-white text-content-muted border-surface-border hover:border-brand-green hover:text-brand-green'
             }`}
         >
-          {t('exercise39.program_select.weekly')}
+          {t('exercise30.program_select.weekly')}
         </button>
         <button
           onClick={() => {
-            setMode('39day');
+            setMode('fitness');
             setActiveVideo(null);
           }}
           className={`flex-1 px-3 py-2 rounded-md text-xs font-semibold border cursor-pointer transition-all
             ${
-              mode === '39day'
+              mode === 'fitness'
                 ? 'bg-brand-green text-white border-brand-green'
                 : 'bg-white text-content-muted border-surface-border hover:border-brand-green hover:text-brand-green'
             }`}
         >
-          {t('exercise39.program_select.39day')}
+          {t('exercise30.program_select.fitness')}
         </button>
       </div>
 
-      {mode === 'yoga30' ? (
+      {mode === 'yoga' ? (
         /* ── 30-Day Yoga Header ── */
         <div className="mb-3.5">
           {/* Week indicator */}
@@ -224,27 +224,27 @@ export default function ExercisePlan() {
           <div className="mb-2">
             <div className="flex justify-between items-center mb-1">
               <span className="text-[11px] text-content-muted font-medium">
-                {t('exercise39.progress').replace('{current}', String(current39 + 1))}
+                {t('exercise30.progress').replace('{current}', String(currentFit + 1))}
               </span>
             </div>
             <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
               <div
                 className={`h-full rounded-full transition-all duration-300 ${PHASE_BAR_COLORS[phase as 1 | 2 | 3]}`}
-                style={{ width: `${((current39 + 1) / 39) * 100}%` }}
+                style={{ width: `${((currentFit + 1) / 30) * 100}%` }}
               />
             </div>
           </div>
 
           {/* Day selector — scrollable row */}
           <div className="flex gap-1 overflow-x-auto pb-1 -mx-1 px-1">
-            {EXERCISE_39_DAYS.map((_, i) => {
+            {EXERCISE_30_DAYS.map((_, i) => {
               const dayPhase = getPhase(i);
-              const isActive = i === current39;
+              const isActive = i === currentFit;
               return (
                 <button
                   key={i}
                   onClick={() => {
-                    setCurrent39(i);
+                    setCurrentFit(i);
                     setActiveVideo(null);
                   }}
                   className={`flex-shrink-0 w-8 h-8 rounded-full text-[10px] font-bold cursor-pointer transition-all border
@@ -266,14 +266,14 @@ export default function ExercisePlan() {
       <div className="bg-brand-green-light border border-brand-green rounded-md p-3 mb-3 flex justify-between items-center">
         <div>
           <div className="text-sm font-bold text-brand-green-dark">
-            {mode === 'yoga30' ? (
+            {mode === 'yoga' ? (
               <>
                 {t('yoga30.day_label').replace('{n}', String(currentYoga + 1))} &mdash;{' '}
                 {t(EXERCISE_TYPE_KEYS[plan.type] || plan.type)}
               </>
             ) : (
               <>
-                {t('exercise39.day_label').replace('{n}', String(current39 + 1))} &mdash;{' '}
+                {t('exercise30.day_label').replace('{n}', String(currentFit + 1))} &mdash;{' '}
                 {t(EXERCISE_TYPE_KEYS[plan.type] || plan.type)}
               </>
             )}
@@ -293,14 +293,14 @@ export default function ExercisePlan() {
             </div>
             <div className="flex-1">
               <div className="text-[13px] font-semibold text-content">
-                {mode === 'yoga30'
+                {mode === 'yoga'
                   ? t(`yoga30.d${currentYoga + 1}.move.${i}.name`)
-                  : t(`exercise39.d${current39 + 1}.move.${i}.name`)}
+                  : t(`exercise30.d${currentFit + 1}.move.${i}.name`)}
               </div>
               <div className="text-[11px] text-content-muted">
-                {mode === 'yoga30'
+                {mode === 'yoga'
                   ? t(`yoga30.d${currentYoga + 1}.move.${i}.desc`)
-                  : t(`exercise39.d${current39 + 1}.move.${i}.desc`)}
+                  : t(`exercise30.d${currentFit + 1}.move.${i}.desc`)}
               </div>
             </div>
             {move.videoUrl && (

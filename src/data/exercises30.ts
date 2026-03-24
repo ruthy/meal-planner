@@ -1,6 +1,6 @@
 import { ExercisePlan } from '@/types';
 
-export const EXERCISE_39_DAYS: ExercisePlan[] = [
+export const EXERCISE_30_DAYS: ExercisePlan[] = [
   // ═══════════════════════════════════════════════
   // PHASE 1: FOUNDATION (Days 1–13)
   // ═══════════════════════════════════════════════
@@ -430,131 +430,6 @@ export const EXERCISE_39_DAYS: ExercisePlan[] = [
       { name: 'Side Shuffle Steps', description: '2 min' },
       { name: 'Knee Lift to Twist', description: '2 x 12 each side' },
       { name: 'Cool Down Stretch', description: '2 min', videoUrl: '5hOj0q9ES48' },
-    ],
-  },
-
-  // Day 31 — Total Body Circuit
-  {
-    day: 'Day 31',
-    type: 'Full Body',
-    time: '20 min',
-    moves: [
-      { name: 'Squats', description: '15 reps — repeat circuit 3x', videoUrl: 'OViE2ghEop0' },
-      { name: 'Push-ups', description: '10 reps — repeat circuit 3x', videoUrl: 'Z57ODV9eGWc' },
-      { name: 'Bird Dogs', description: '10 each side — repeat circuit 3x', videoUrl: 'r6xE76wX-5s' },
-      { name: 'March in Place', description: '1 min — repeat circuit 3x', videoUrl: 'u1gmWFvEluM' },
-      { name: 'Full Body Stretch', description: '2 min', videoUrl: 'dF965ll2J0c' },
-    ],
-  },
-
-  // Day 32 — Legs Sculpt
-  {
-    day: 'Day 32',
-    type: 'Lower Body',
-    time: '20 min',
-    moves: [
-      { name: 'Pulse Squats', description: '3 x 15 reps', videoUrl: 'OViE2ghEop0' },
-      { name: 'Curtsy Lunges', description: '2 x 10 each leg' },
-      { name: 'Bridge Hold', description: '2 x 30 sec', videoUrl: 'OUgsJ8-Vi0E' },
-      { name: 'Standing Kickbacks', description: '2 x 12 each leg' },
-      { name: 'Leg Stretch', description: '2 min' },
-    ],
-  },
-
-  // Day 33 — Arms Sculpt
-  {
-    day: 'Day 33',
-    type: 'Upper Body',
-    time: '20 min',
-    moves: [
-      { name: 'Narrow Push-ups on Counter', description: '3 x 10 reps' },
-      { name: 'Hammer Curls', description: '3 x 12 reps' },
-      { name: 'Overhead Tricep Extension', description: '2 x 12 reps' },
-      { name: 'Front and Lateral Raises Combo', description: '2 x 10 reps' },
-      { name: 'Arm Stretch', description: '2 min' },
-    ],
-  },
-
-  // Day 34 — Active Recovery
-  {
-    day: 'Day 34',
-    type: 'Stretch',
-    time: '15 min',
-    moves: [
-      { name: 'Cat-Cow Flow', description: '3 min' },
-      { name: 'Downward Dog Modification', description: '2 min' },
-      { name: "Child's Pose", description: '2 min', videoUrl: 'nMp3MlTz9fA' },
-      { name: 'Hip Stretch and Spinal Twist', description: '5 min', videoUrl: 'qEVNj4tcr0Y' },
-      { name: 'Deep Breathing', description: '3 min', videoUrl: 'DbDoBzGY3vo' },
-    ],
-  },
-
-  // Day 35 — Core Finisher
-  {
-    day: 'Day 35',
-    type: 'Core',
-    time: '18 min',
-    moves: [
-      { name: 'Plank', description: '2 x 40 sec' },
-      { name: 'Dead Bugs', description: '3 x 12 each side' },
-      { name: 'Bicycle Crunches', description: '3 x 12 each side' },
-      { name: 'Pelvic Tilt to Bridge to March', description: '2 x 10 reps', videoUrl: '44D6Xc2Fkek' },
-      { name: 'Full Body Stretch', description: '2 min', videoUrl: 'dF965ll2J0c' },
-    ],
-  },
-
-  // Day 36 — Cardio Finisher
-  {
-    day: 'Day 36',
-    type: 'Cardio',
-    time: '20 min',
-    moves: [
-      { name: 'March with Punches', description: '3 min', videoUrl: 'u1gmWFvEluM' },
-      { name: 'Speed Step Touches', description: '3 min' },
-      { name: 'Boxing + Knee Lifts Combo', description: '3 min' },
-      { name: 'Standing Twists Fast', description: '2 min' },
-      { name: 'Cool Down Stretch', description: '3 min', videoUrl: '5hOj0q9ES48' },
-    ],
-  },
-
-  // Day 37 — Total Body Strength
-  {
-    day: 'Day 37',
-    type: 'Full Body',
-    time: '20 min',
-    moves: [
-      { name: 'Squats', description: '3 x 15 reps', videoUrl: 'OViE2ghEop0' },
-      { name: 'Counter Push-ups', description: '3 x 12 reps' },
-      { name: 'Single Leg Bridge', description: '3 x 10 each leg', videoUrl: 'OUgsJ8-Vi0E' },
-      { name: 'Bird Dog with Reach', description: '3 x 10 each side', videoUrl: 'r6xE76wX-5s' },
-      { name: 'Full Body Stretch', description: '3 min', videoUrl: 'dF965ll2J0c' },
-    ],
-  },
-
-  // Day 38 — Final Push Circuit
-  {
-    day: 'Day 38',
-    type: 'Full Body',
-    time: '20 min',
-    moves: [
-      { name: 'Squats', description: '12 reps — repeat circuit 3x', videoUrl: 'OViE2ghEop0' },
-      { name: 'Push-ups', description: '10 reps — repeat circuit 3x', videoUrl: 'Z57ODV9eGWc' },
-      { name: 'Plank', description: '20 sec — repeat circuit 3x' },
-      { name: 'Lunges', description: '10 each leg — repeat circuit 3x' },
-      { name: 'Celebration Stretch', description: '3 min', videoUrl: 'dF965ll2J0c' },
-    ],
-  },
-
-  // Day 39 — Celebration + Stretch
-  {
-    day: 'Day 39',
-    type: 'Stretch',
-    time: '20 min',
-    moves: [
-      { name: 'Light March', description: '3 min', videoUrl: 'u1gmWFvEluM' },
-      { name: 'Gentle Full Body Movements', description: '3 min' },
-      { name: 'Complete Stretch Routine', description: '10 min — every muscle group', videoUrl: 'dF965ll2J0c' },
-      { name: 'Deep Breathing and Reflection', description: '3 min', videoUrl: 'DbDoBzGY3vo' },
     ],
   },
 ];
