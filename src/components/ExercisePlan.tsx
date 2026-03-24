@@ -1,45 +1,42 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { EXERCISE_PLANS } from '@/data/exercises';
+import { YOGA_30_DAYS } from '@/data/exercises';
 import { EXERCISE_39_DAYS } from '@/data/exercises39';
-import { getTodayDayIndex } from '@/lib/dates';
 import { useDailyTracking } from '@/hooks/useDailyTracking';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-const DAY_KEYS = ['day.mon', 'day.tue', 'day.wed', 'day.thu', 'day.fri', 'day.sat', 'day.sun'] as const;
-const DAY_ABBR = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'] as const;
+type ProgramMode = 'yoga30' | '39day';
 
-const DAY_FULL_KEYS: Record<string, string> = {
-  Monday: 'day.monday',
-  Tuesday: 'day.tuesday',
-  Wednesday: 'day.wednesday',
-  Thursday: 'day.thursday',
-  Friday: 'day.friday',
-  Saturday: 'day.saturday',
-  Sunday: 'day.sunday',
-};
-
-const EXERCISE_TYPE_KEYS: Record<string, string> = {
-  Cardio: 'exercise.type.cardio',
-  Strength: 'exercise.type.strength',
-  Core: 'exercise.type.core',
-  Stretch: 'exercise.type.stretch',
-  Rest: 'exercise.type.rest',
-  'Lower Body': 'exercise.type.lower_body',
-  'Upper Body': 'exercise.type.upper_body',
-  'Full Body': 'exercise.type.full_body',
-  'Lower Body + Core': 'exercise.type.lower_body_core',
-  'Upper Body + Cardio': 'exercise.type.upper_body_cardio',
-};
-
-type ProgramMode = 'weekly' | '39day';
+function getYogaWeek(dayIndex: number): { week: number; name: string } {
+  if (dayIndex < 7) return { week: 1, name: 'yoga30.week.1.name' };
+  if (dayIndex < 14) return { week: 2, name: 'yoga30.week.2.name' };
+  if (dayIndex < 21) return { week: 3, name: 'yoga30.week.3.name' };
+  if (dayIndex < 28) return { week: 4, name: 'yoga30.week.4.name' };
+  return { week: 5, name: 'yoga30.week.5.name' };
+}
 
 function getPhase(dayIndex: number): { phase: number; name: string } {
   if (dayIndex < 13) return { phase: 1, name: 'exercise39.phase.1.name' };
   if (dayIndex < 26) return { phase: 2, name: 'exercise39.phase.2.name' };
   return { phase: 3, name: 'exercise39.phase.3.name' };
 }
+
+const YOGA_WEEK_COLORS = {
+  1: 'bg-teal-100 border-teal-300 text-teal-800',
+  2: 'bg-blue-100 border-blue-300 text-blue-800',
+  3: 'bg-indigo-100 border-indigo-300 text-indigo-800',
+  4: 'bg-purple-100 border-purple-300 text-purple-800',
+  5: 'bg-pink-100 border-pink-300 text-pink-800',
+} as const;
+
+const YOGA_WEEK_BAR_COLORS = {
+  1: 'bg-teal-500',
+  2: 'bg-blue-500',
+  3: 'bg-indigo-500',
+  4: 'bg-purple-500',
+  5: 'bg-pink-500',
+} as const;
 
 const PHASE_COLORS = {
   1: 'bg-emerald-100 border-emerald-300 text-emerald-800',
@@ -53,9 +50,44 @@ const PHASE_BAR_COLORS = {
   3: 'bg-purple-500',
 } as const;
 
+const EXERCISE_TYPE_KEYS: Record<string, string> = {
+  Cardio: 'exercise.type.cardio',
+  Strength: 'exercise.type.strength',
+  Core: 'exercise.type.core',
+  Stretch: 'exercise.type.stretch',
+  Rest: 'exercise.type.rest',
+  'Lower Body': 'exercise.type.lower_body',
+  'Upper Body': 'exercise.type.upper_body',
+  'Full Body': 'exercise.type.full_body',
+  'Lower Body + Core': 'exercise.type.lower_body_core',
+  'Upper Body + Cardio': 'exercise.type.upper_body_cardio',
+  'Gentle Flow': 'exercise.type.gentle_flow',
+  'Standing Basics': 'exercise.type.standing_basics',
+  Flexibility: 'exercise.type.flexibility',
+  'Balance & Focus': 'exercise.type.balance_focus',
+  'Hip Openers': 'exercise.type.hip_openers',
+  Restorative: 'exercise.type.restorative',
+  'Full Body Flow': 'exercise.type.full_body_flow',
+  'Standing Strength': 'exercise.type.standing_strength',
+  'Core & Twists': 'exercise.type.core_twists',
+};
+
 export default function ExercisePlan() {
-  const [mode, setMode] = useState<ProgramMode>('weekly');
-  const [current, setCurrent] = useState(() => getTodayDayIndex());
+  const [mode, setMode] = useState<ProgramMode>('yoga30');
+  const [currentYoga, setCurrentYoga] = useState(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem('yoga30_current_day');
+        if (saved !== null) {
+          const parsed = parseInt(saved, 10);
+          if (!isNaN(parsed) && parsed >= 0 && parsed < 30) return parsed;
+        }
+      } catch {
+        // localStorage unavailable
+      }
+    }
+    return 0;
+  });
   const [current39, setCurrent39] = useState(() => {
     if (typeof window !== 'undefined') {
       try {
@@ -74,6 +106,15 @@ export default function ExercisePlan() {
   const { tracking, toggleExercise } = useDailyTracking();
   const { t } = useLanguage();
 
+  // Persist yoga 30-day progress
+  useEffect(() => {
+    try {
+      localStorage.setItem('yoga30_current_day', String(currentYoga));
+    } catch {
+      // localStorage unavailable
+    }
+  }, [currentYoga]);
+
   // Persist 39-day progress
   useEffect(() => {
     try {
@@ -83,7 +124,8 @@ export default function ExercisePlan() {
     }
   }, [current39]);
 
-  const plan = mode === 'weekly' ? EXERCISE_PLANS[current] : EXERCISE_39_DAYS[current39];
+  const plan = mode === 'yoga30' ? YOGA_30_DAYS[currentYoga] : EXERCISE_39_DAYS[current39];
+  const { week: yogaWeek, name: yogaWeekName } = getYogaWeek(currentYoga);
   const { phase, name: phaseName } = getPhase(current39);
 
   return (
@@ -92,12 +134,12 @@ export default function ExercisePlan() {
       <div className="flex gap-2 mb-3">
         <button
           onClick={() => {
-            setMode('weekly');
+            setMode('yoga30');
             setActiveVideo(null);
           }}
           className={`flex-1 px-3 py-2 rounded-md text-xs font-semibold border cursor-pointer transition-all
             ${
-              mode === 'weekly'
+              mode === 'yoga30'
                 ? 'bg-brand-green text-white border-brand-green'
                 : 'bg-white text-content-muted border-surface-border hover:border-brand-green hover:text-brand-green'
             }`}
@@ -120,26 +162,55 @@ export default function ExercisePlan() {
         </button>
       </div>
 
-      {mode === 'weekly' ? (
-        /* ── Weekly Plan Day Selector ── */
-        <div className="flex gap-1.5 flex-wrap mb-3.5">
-          {DAY_KEYS.map((key, i) => (
-            <button
-              key={key}
-              onClick={() => {
-                setCurrent(i);
-                setActiveVideo(null);
-              }}
-              className={`px-2.5 py-2 border rounded-md text-xs font-semibold cursor-pointer transition-all text-center
-                ${
-                  i === current
-                    ? 'bg-brand-green-light border-brand-green-mid text-brand-green-dark'
-                    : 'bg-white border-surface-border text-content-muted hover:border-brand-green hover:text-brand-green'
-                }`}
-            >
-              {t(key)}
-            </button>
-          ))}
+      {mode === 'yoga30' ? (
+        /* ── 30-Day Yoga Header ── */
+        <div className="mb-3.5">
+          {/* Week indicator */}
+          <div
+            className={`border rounded-md px-3 py-1.5 mb-2 text-xs font-bold ${YOGA_WEEK_COLORS[yogaWeek as 1 | 2 | 3 | 4 | 5]}`}
+          >
+            {t(yogaWeekName)}
+          </div>
+
+          {/* Progress bar */}
+          <div className="mb-2">
+            <div className="flex justify-between items-center mb-1">
+              <span className="text-[11px] text-content-muted font-medium">
+                {t('yoga30.progress').replace('{current}', String(currentYoga + 1))}
+              </span>
+            </div>
+            <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div
+                className={`h-full rounded-full transition-all duration-300 ${YOGA_WEEK_BAR_COLORS[yogaWeek as 1 | 2 | 3 | 4 | 5]}`}
+                style={{ width: `${((currentYoga + 1) / 30) * 100}%` }}
+              />
+            </div>
+          </div>
+
+          {/* Day selector — scrollable row */}
+          <div className="flex gap-1 overflow-x-auto pb-1 -mx-1 px-1">
+            {YOGA_30_DAYS.map((_, i) => {
+              const dayWeek = getYogaWeek(i);
+              const isActive = i === currentYoga;
+              return (
+                <button
+                  key={i}
+                  onClick={() => {
+                    setCurrentYoga(i);
+                    setActiveVideo(null);
+                  }}
+                  className={`flex-shrink-0 w-8 h-8 rounded-full text-[10px] font-bold cursor-pointer transition-all border
+                    ${
+                      isActive
+                        ? `${YOGA_WEEK_BAR_COLORS[dayWeek.week as 1 | 2 | 3 | 4 | 5]} text-white border-transparent`
+                        : 'bg-white border-surface-border text-content-muted hover:border-brand-green hover:text-brand-green'
+                    }`}
+                >
+                  {i + 1}
+                </button>
+              );
+            })}
+          </div>
         </div>
       ) : (
         /* ── 39-Day Program Header ── */
@@ -195,9 +266,10 @@ export default function ExercisePlan() {
       <div className="bg-brand-green-light border border-brand-green rounded-md p-3 mb-3 flex justify-between items-center">
         <div>
           <div className="text-sm font-bold text-brand-green-dark">
-            {mode === 'weekly' ? (
+            {mode === 'yoga30' ? (
               <>
-                {t(DAY_FULL_KEYS[plan.day] || plan.day)} &mdash; {t(EXERCISE_TYPE_KEYS[plan.type] || plan.type)}
+                {t('yoga30.day_label').replace('{n}', String(currentYoga + 1))} &mdash;{' '}
+                {t(EXERCISE_TYPE_KEYS[plan.type] || plan.type)}
               </>
             ) : (
               <>
@@ -221,13 +293,13 @@ export default function ExercisePlan() {
             </div>
             <div className="flex-1">
               <div className="text-[13px] font-semibold text-content">
-                {mode === 'weekly'
-                  ? t(`exercise.${DAY_ABBR[current]}.move.${i}.name`)
+                {mode === 'yoga30'
+                  ? t(`yoga30.d${currentYoga + 1}.move.${i}.name`)
                   : t(`exercise39.d${current39 + 1}.move.${i}.name`)}
               </div>
               <div className="text-[11px] text-content-muted">
-                {mode === 'weekly'
-                  ? t(`exercise.${DAY_ABBR[current]}.move.${i}.desc`)
+                {mode === 'yoga30'
+                  ? t(`yoga30.d${currentYoga + 1}.move.${i}.desc`)
                   : t(`exercise39.d${current39 + 1}.move.${i}.desc`)}
               </div>
             </div>
