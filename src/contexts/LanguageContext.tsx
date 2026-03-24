@@ -1,9 +1,9 @@
 'use client';
 
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from 'react';
-import { en, he } from '@/i18n';
+import { en, he, lt } from '@/i18n';
 
-type Lang = 'en' | 'he';
+type Lang = 'en' | 'he' | 'lt';
 type Dir = 'ltr' | 'rtl';
 
 interface LanguageContextType {
@@ -13,7 +13,7 @@ interface LanguageContextType {
   t: (key: string) => string;
 }
 
-const translations: Record<Lang, Record<string, string>> = { en, he };
+const translations: Record<Lang, Record<string, string>> = { en, he, lt };
 
 const LanguageContext = createContext<LanguageContextType>({
   lang: 'en',
@@ -25,7 +25,7 @@ const LanguageContext = createContext<LanguageContextType>({
 function getInitialLang(): Lang {
   if (typeof window !== 'undefined') {
     const stored = localStorage.getItem('lang');
-    if (stored === 'en' || stored === 'he') return stored;
+    if (stored === 'en' || stored === 'he' || stored === 'lt') return stored;
   }
   return 'en';
 }

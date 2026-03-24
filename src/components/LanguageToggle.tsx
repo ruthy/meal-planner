@@ -2,11 +2,16 @@
 
 import { useLanguage } from '@/contexts/LanguageContext';
 
+const langs = ['en', 'he', 'lt'] as const;
+const labels: Record<(typeof langs)[number], string> = { en: 'EN', he: 'עב', lt: 'LT' };
+
 export default function LanguageToggle() {
   const { lang, setLang } = useLanguage();
 
   const toggle = () => {
-    setLang(lang === 'en' ? 'he' : 'en');
+    const currentIdx = langs.indexOf(lang);
+    const nextIdx = (currentIdx + 1) % langs.length;
+    setLang(langs[nextIdx]);
   };
 
   return (
@@ -15,7 +20,7 @@ export default function LanguageToggle() {
       className="text-[11px] px-3 py-1 bg-white/20 border border-white/40 rounded-full text-white cursor-pointer hover:bg-white/30 transition-colors"
       aria-label="Toggle language"
     >
-      {lang === 'en' ? 'עב' : 'EN'}
+      {labels[lang]}
     </button>
   );
 }
