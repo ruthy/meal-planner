@@ -95,9 +95,7 @@ export default function LoginPage() {
       <div className="bg-white rounded-2xl p-8 w-full max-w-[380px] shadow-2xl">
         {/* Logo */}
         <div className="text-center mb-6">
-          <div className="w-16 h-16 bg-[#1B5E3B] rounded-2xl inline-flex items-center justify-center mb-3">
-            <span className="text-3xl">🌿</span>
-          </div>
+          <img src="/logo.svg" alt="DailyBite" className="w-16 h-16 inline-block mb-3" />
           <div className="text-xl font-extrabold text-content">{t('app_name')}</div>
           <div className="text-xs text-content-muted mt-1">
             {t('app_tagline')} &mdash; {t('app_subtitle')}

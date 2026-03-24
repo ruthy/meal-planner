@@ -31,9 +31,7 @@ export default function LandingPage() {
 
         <div className="relative max-w-[640px] mx-auto text-center">
           {/* Logo */}
-          <div className="w-20 h-20 bg-white/15 backdrop-blur-sm rounded-3xl inline-flex items-center justify-center mb-6 shadow-lg">
-            <span className="text-4xl">🌿</span>
-          </div>
+          <img src="/logo.svg" alt="DailyBite" className="w-20 h-20 inline-block mb-6 drop-shadow-lg" />
           <div className="text-white/90 text-sm font-bold tracking-widest uppercase mb-4">{t('app_name')}</div>
 
           {/* Title */}

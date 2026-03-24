@@ -16,7 +16,7 @@ export async function GET() {
         fontFamily: 'system-ui, -apple-system, sans-serif',
       }}
     >
-      <div style={{ fontSize: 80, marginBottom: 8 }}>🌿</div>
+      <div style={{ fontSize: 80, marginBottom: 8 }}>🍎</div>
       <div
         style={{
           fontSize: 64,
