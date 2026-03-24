@@ -1,0 +1,72 @@
+import { ShopCategory } from '@/types';
+
+export const SHOP_CATEGORIES: ShopCategory[] = [
+  {
+    name: 'Protein',
+    items: [
+      'Chicken breast (1 kg)',
+      'Salmon fillets (500g)',
+      'Smoked salmon (200g)',
+      'Canned salmon wild (2 tins)',
+      'Eggs (12 pack)',
+      'Greek yogurt plain (large)',
+      'Cottage cheese low fat (500g)',
+      'GF protein powder (1 bag)',
+    ],
+  },
+  {
+    name: 'Vegetables',
+    items: [
+      'Broccoli (2 heads)',
+      'Zucchini (4)',
+      'Cauliflower (1 head)',
+      'Spinach fresh (large bag)',
+      'Red bell peppers (4)',
+      'Yellow bell peppers (3)',
+      'Orange bell peppers (2)',
+      'Cucumber (3)',
+      'Carrots (bag)',
+      'Celery (bunch)',
+      'Mushrooms (200g)',
+      'Asparagus (1 bunch)',
+      'Green beans (bag)',
+      'Bok choy (1 bunch)',
+      'Avocado (4)',
+      'Sweet potato (4)',
+      'Red onion (2)',
+      'Garlic (1 bulb)',
+    ],
+  },
+  {
+    name: 'Fruit',
+    items: [
+      'Blueberries fresh (2 pints)',
+      'Raspberries (1 pint)',
+      'Strawberries (1 pint)',
+      'Mixed berries frozen (bag)',
+      'Mango fresh (3)',
+      'Mango frozen (bag)',
+      'Banana (bunch)',
+      'Pear (3)',
+      'Lemon (4)',
+    ],
+  },
+  {
+    name: 'Grains & Carbs (GF)',
+    items: ['Quinoa GF certified (500g)', 'Brown rice GF (500g)', 'Chia seeds GF (small bag)'],
+  },
+  {
+    name: 'Pantry & Cooking',
+    items: [
+      'Olive oil (bottle)',
+      'Cashew milk unsweetened (2L)',
+      'Tamari GF soy sauce',
+      'Sesame oil (small)',
+      'Chicken bone broth (4 cartons)',
+      'Honey raw (small jar)',
+      'Paprika + cumin (GF spices)',
+      'Dill fresh or dried',
+      'Stevia drops',
+    ],
+  },
+];
