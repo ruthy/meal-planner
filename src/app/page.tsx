@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageToggle from '@/components/LanguageToggle';
+import EmailCapture from '@/components/EmailCapture';
 
 export default function LandingPage() {
   const { user, loading } = useAuth();
@@ -158,6 +159,9 @@ export default function LandingPage() {
           <p className="text-base md:text-lg font-semibold text-content">{t('landing.bilingual')}</p>
         </div>
       </section>
+
+      {/* ===== EMAIL CAPTURE ===== */}
+      <EmailCapture />
 
       {/* ===== FINAL CTA ===== */}
       <section

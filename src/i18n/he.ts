@@ -226,9 +226,9 @@ const he: Record<string, string> = {
   'footer.copyright': 'התוכנית שמשנה את הדרך שבה את אוכלת.',
 
   // Landing page
-  'landing.hero.title': 'התוכנית שמשנה את הדרך שבה את אוכלת.',
+  'landing.hero.title': 'התוכנית שמשנה את הדרך שבה אתם אוכלים.',
   'landing.hero.subtitle':
-    'תכנון ארוחות ללא גלוטן מותאם אישית לנשים 40+. מעקב ארוחות, מים, פעילות גופנית ומשקל — הכל באפליקציה אחת.',
+    'תכנון ארוחות ללא גלוטן מותאם אישית לגברים ונשים 40+. מעקב ארוחות, מים, פעילות גופנית ומשקל — הכל באפליקציה אחת.',
   'landing.hero.cta': 'התחילי בחינם →',
   'landing.hero.cta_dashboard': 'ללוח הבקרה →',
   'landing.hero.learn_more': 'למידע נוסף ↓',
@@ -266,6 +266,12 @@ const he: Record<string, string> = {
   'landing.cta.title': 'התחילי את השינוי היום.',
   'landing.cta.subtitle': 'ללא צורך בכרטיס אשראי. חינם לנצח.',
   'landing.cta.button': 'התחילי בחינם →',
+
+  'landing.email.title': 'קבלו עדכונים על פיצ׳רים חדשים',
+  'landing.email.placeholder': 'הזינו את האימייל שלכם',
+  'landing.email.button': 'הרשמה',
+  'landing.email.success': 'תודה! נעדכן אתכם.',
+  'landing.email.error': 'אופס — נסו שוב.',
 
   'landing.footer.privacy': 'פרטיות',
   'landing.footer.terms': 'תנאי שימוש',

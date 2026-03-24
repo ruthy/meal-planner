@@ -219,7 +219,7 @@ const en: Record<string, string> = {
   // Landing page
   'landing.hero.title': 'The plan that transforms how you eat.',
   'landing.hero.subtitle':
-    'A personalized gluten-free meal planner designed for women 40+. Track meals, water, exercise, and weight — all in one beautiful app.',
+    'A personalized gluten-free meal planner for men and women 40+. Track meals, water, exercise, and weight — all in one beautiful app.',
   'landing.hero.cta': 'Get Started Free →',
   'landing.hero.cta_dashboard': 'Go to Dashboard →',
   'landing.hero.learn_more': 'Learn More ↓',
@@ -258,6 +258,12 @@ const en: Record<string, string> = {
   'landing.cta.title': 'Start your transformation today.',
   'landing.cta.subtitle': 'No credit card required. Free forever.',
   'landing.cta.button': 'Get Started Free →',
+
+  'landing.email.title': 'Get notified when we launch new features',
+  'landing.email.placeholder': 'Enter your email',
+  'landing.email.button': 'Subscribe',
+  'landing.email.success': "Thanks! We'll keep you posted.",
+  'landing.email.error': 'Oops — please try again.',
 
   'landing.footer.privacy': 'Privacy',
   'landing.footer.terms': 'Terms',

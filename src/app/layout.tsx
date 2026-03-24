@@ -9,7 +9,7 @@ const siteUrl = 'https://www.dailybite.fit';
 export const metadata: Metadata = {
   title: 'DailyBite — The plan that transforms how you eat.',
   description:
-    'A personalized gluten-free meal planner for women 40+. Track meals, calories, water, exercise & weight — free, bilingual (EN/HE), works on any device.',
+    'A personalized gluten-free meal planner for men and women 40+. Track meals, calories, water, exercise & weight — free, bilingual (EN/HE), works on any device.',
   manifest: '/manifest.json',
   metadataBase: new URL(siteUrl),
   alternates: {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: 'DailyBite',
     title: 'DailyBite — The plan that transforms how you eat.',
     description:
-      'Gluten-free meal planner with 7-day menus, calorie calculator, water tracker, exercise videos & progress charts. Free. Works on iPhone & Android.',
+      'Gluten-free meal planner with 7-day menus, calorie calculator, water tracker, exercise videos & progress charts. For men and women 40+. Free.',
     images: [
       {
         url: '/api/og',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'DailyBite — The plan that transforms how you eat.',
-    description: 'Free gluten-free meal planner for women 40+. Track meals, water, exercise & weight.',
+    description: 'Free gluten-free meal planner for men and women 40+. Track meals, water, exercise & weight.',
     images: ['/api/og'],
   },
   keywords: [
@@ -79,7 +79,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               '@type': 'WebApplication',
               name: 'DailyBite',
               url: siteUrl,
-              description: 'A personalized gluten-free meal planner for women 40+.',
+              description: 'A personalized gluten-free meal planner for men and women 40+.',
               applicationCategory: 'HealthApplication',
               operatingSystem: 'Any',
               offers: {
