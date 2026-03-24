@@ -5,21 +5,7 @@ const enKeys = Object.keys(en);
 const heKeys = Object.keys(he);
 
 // Known keys that exist only in HE (not yet added to EN)
-const knownHeOnlyKeys = [
-  'meals.breakfast',
-  'meals.morning_snack',
-  'meals.lunch',
-  'meals.afternoon_snack',
-  'meals.dinner',
-  'meals.dessert',
-  'shots.why.metabolic_flush',
-  'shots.why.belly_blaster',
-  'shots.why.immune_booster',
-  'shots.why.fat_flush',
-  'shots.why.anti_inflammatory',
-  'shots.why.detox_green',
-  'shots.why.hormone_balance',
-];
+const knownHeOnlyKeys: string[] = [];
 
 describe('i18n translation completeness', () => {
   it('EN and HE have the expected key count difference', () => {

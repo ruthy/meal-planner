@@ -8,6 +8,25 @@ import { useDailyTracking } from '@/hooks/useDailyTracking';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const DAY_KEYS = ['day.mon', 'day.tue', 'day.wed', 'day.thu', 'day.fri', 'day.sat', 'day.sun'] as const;
+const DAY_ABBR = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'] as const;
+
+const MEAL_NAME_KEYS: Record<string, string> = {
+  Breakfast: 'meals.breakfast',
+  'Morning snack': 'meals.morning_snack',
+  Lunch: 'meals.lunch',
+  'Afternoon snack': 'meals.afternoon_snack',
+  Dinner: 'meals.dinner',
+  Dessert: 'meals.dessert',
+};
+
+const MEAL_SLOT_KEYS: Record<string, string> = {
+  Breakfast: 'breakfast',
+  'Morning snack': 'morning_snack',
+  Lunch: 'lunch',
+  'Afternoon snack': 'afternoon_snack',
+  Dinner: 'dinner',
+  Dessert: 'dessert',
+};
 
 interface MealPlannerProps {
   targetCalories: number;
@@ -68,7 +87,7 @@ export default function MealPlanner({ targetCalories }: MealPlannerProps) {
 
       {/* Day header + progress */}
       <div className="text-[13px] font-semibold text-content-muted mb-1.5">
-        {day.label} &mdash; {day.theme}
+        {t(`day.${day.label.toLowerCase()}`)} &mdash; {t(`meal.theme.${DAY_ABBR[currentDay]}`)}
       </div>
       <div className="flex justify-between text-[11px] mb-0.5 text-content-muted">
         <span>0 {t('common.cal')}</span>
@@ -107,14 +126,14 @@ export default function MealPlanner({ targetCalories }: MealPlannerProps) {
               </span>
               <div className="flex-1 min-w-0">
                 <div className="text-sm font-semibold text-content">
-                  {meal.name}
+                  {t(MEAL_NAME_KEYS[meal.name] || meal.name)}
                   <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-surface-bg text-content-muted ml-1.5 border border-surface-border align-middle">
                     {meal.time}
                   </span>
                 </div>
                 <div className="text-[11px] text-content-muted mt-0.5">
                   {t('meals.protein')} {meal.p}g &middot; {t('meals.carbs')} {meal.c}g &middot; {t('meals.fat')}{' '}
-                  {meal.f}g &middot; {meal.items.length} items
+                  {meal.f}g &middot; {meal.items.length} {t('meals.items_count')}
                 </div>
               </div>
               <button
@@ -163,31 +182,34 @@ export default function MealPlanner({ targetCalories }: MealPlannerProps) {
                     </tr>
                   </thead>
                   <tbody>
-                    {meal.items.map((item, ii) => (
-                      <tr key={ii}>
-                        <td
-                          className={`text-xs px-3.5 py-1.5 border-t border-surface-border ${item.isNew ? 'text-[#3B6D11] font-semibold' : 'text-content'}`}
-                        >
-                          {item.name}
-                          {item.isNew && ' ✓'}
-                        </td>
-                        <td className="text-xs text-content-muted px-3.5 py-1.5 border-t border-surface-border text-right">
-                          {item.g}g
-                        </td>
-                        <td className="text-xs text-content-muted px-3.5 py-1.5 border-t border-surface-border text-right max-[480px]:hidden">
-                          {item.p}g
-                        </td>
-                        <td className="text-xs text-content-muted px-3.5 py-1.5 border-t border-surface-border text-right max-[480px]:hidden">
-                          {item.c}g
-                        </td>
-                        <td className="text-xs text-content-muted px-3.5 py-1.5 border-t border-surface-border text-right">
-                          {item.f}g
-                        </td>
-                        <td className="text-xs text-content-muted px-3.5 py-1.5 border-t border-surface-border text-right">
-                          {item.cal}
-                        </td>
-                      </tr>
-                    ))}
+                    {meal.items.map((item, ii) => {
+                      const itemKey = `meal.${DAY_ABBR[currentDay]}.${MEAL_SLOT_KEYS[meal.name] || meal.name}.${ii}`;
+                      return (
+                        <tr key={ii}>
+                          <td
+                            className={`text-xs px-3.5 py-1.5 border-t border-surface-border ${item.isNew ? 'text-[#3B6D11] font-semibold' : 'text-content'}`}
+                          >
+                            {t(itemKey)}
+                            {item.isNew && ' ✓'}
+                          </td>
+                          <td className="text-xs text-content-muted px-3.5 py-1.5 border-t border-surface-border text-right">
+                            {item.g}g
+                          </td>
+                          <td className="text-xs text-content-muted px-3.5 py-1.5 border-t border-surface-border text-right max-[480px]:hidden">
+                            {item.p}g
+                          </td>
+                          <td className="text-xs text-content-muted px-3.5 py-1.5 border-t border-surface-border text-right max-[480px]:hidden">
+                            {item.c}g
+                          </td>
+                          <td className="text-xs text-content-muted px-3.5 py-1.5 border-t border-surface-border text-right">
+                            {item.f}g
+                          </td>
+                          <td className="text-xs text-content-muted px-3.5 py-1.5 border-t border-surface-border text-right">
+                            {item.cal}
+                          </td>
+                        </tr>
+                      );
+                    })}
                     <tr className="bg-surface-bg">
                       <td className="text-[11px] font-bold text-content px-3.5 py-1.5 border-t border-surface-border">
                         {t('meals.meal_total')}
@@ -234,9 +256,7 @@ export default function MealPlanner({ targetCalories }: MealPlannerProps) {
 
       {/* GF note */}
       <div className="bg-accent-blue-light border border-[#B5D4F4] rounded-lg p-3 mt-3 text-xs text-accent-blue-dark leading-relaxed">
-        <strong>{t('meals.gf_rules')}:</strong> All ingredients are naturally GF. Use tamari instead of soy sauce.
-        Choose certified GF protein powder (whey isolate or pea protein). Always check cottage cheese and yogurt labels
-        &mdash; choose plain, unflavoured. Use a kitchen scale for the first 2 weeks.
+        <strong>{t('meals.gf_rules')}:</strong> {t('meals.gf_note')}
       </div>
     </div>
   );

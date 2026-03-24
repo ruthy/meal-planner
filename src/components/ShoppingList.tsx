@@ -12,6 +12,14 @@ const CATEGORY_KEYS: Record<string, string> = {
   'Pantry & Cooking': 'shopping.category.pantry',
 };
 
+const CATEGORY_ITEM_KEYS: Record<string, string> = {
+  Protein: 'protein',
+  Vegetables: 'vegetables',
+  Fruit: 'fruit',
+  'Grains & Carbs (GF)': 'grains',
+  'Pantry & Cooking': 'pantry',
+};
+
 export default function ShoppingList() {
   const { tracking, toggleShopItem } = useDailyTracking();
   const { t } = useLanguage();
@@ -45,7 +53,7 @@ export default function ShoppingList() {
                   >
                     {got && '✓'}
                   </div>
-                  {item}
+                  {t(`shopping.item.${CATEGORY_ITEM_KEYS[cat.name] || cat.name}.${i}`)}
                 </div>
               );
             })}

@@ -7,6 +7,7 @@ import { useDailyTracking } from '@/hooks/useDailyTracking';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const DAY_KEYS = ['day.mon', 'day.tue', 'day.wed', 'day.thu', 'day.fri', 'day.sat', 'day.sun'] as const;
+const DAY_ABBR = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'] as const;
 
 const DAY_FULL_KEYS: Record<string, string> = {
   Monday: 'day.monday',
@@ -74,8 +75,10 @@ export default function ExercisePlan() {
               {i + 1}
             </div>
             <div className="flex-1">
-              <div className="text-[13px] font-semibold text-content">{move.name}</div>
-              <div className="text-[11px] text-content-muted">{move.description}</div>
+              <div className="text-[13px] font-semibold text-content">
+                {t(`exercise.${DAY_ABBR[current]}.move.${i}.name`)}
+              </div>
+              <div className="text-[11px] text-content-muted">{t(`exercise.${DAY_ABBR[current]}.move.${i}.desc`)}</div>
             </div>
             {move.videoUrl && (
               <button
@@ -86,7 +89,7 @@ export default function ExercisePlan() {
                   }`}
               >
                 <span>{activeVideo === move.videoUrl ? '✕' : '▶'}</span>
-                {activeVideo === move.videoUrl ? 'Close' : t('exercise.watch_video')}
+                {activeVideo === move.videoUrl ? t('exercise.close_video') : t('exercise.watch_video')}
               </button>
             )}
           </div>

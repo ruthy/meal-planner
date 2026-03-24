@@ -12,7 +12,7 @@ export default function ReminderBar() {
   const handleEnable = async () => {
     const ok = await startReminders(REMINDER_SCHEDULE);
     if (ok) setActive(true);
-    else alert('Please allow notifications when prompted, or use Chrome/Safari.');
+    else alert(t('reminders.notification_blocked'));
   };
 
   return (

@@ -7,6 +7,7 @@ import { useDailyTracking } from '@/hooks/useDailyTracking';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const DAY_KEYS = ['day.mon', 'day.tue', 'day.wed', 'day.thu', 'day.fri', 'day.sat', 'day.sun'] as const;
+const DAY_ABBR = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'] as const;
 
 const SHOT_NAME_KEYS: Record<string, string> = {
   'Metabolic Flush': 'shots.name.metabolic_flush',
@@ -74,10 +75,10 @@ export default function MetaBoostShots() {
         <div className="mt-3 text-[11px] font-bold opacity-80 uppercase tracking-wider mb-1">
           {t('shots.ingredients')}
         </div>
-        {shot.ingredients.map((ing, i) => (
+        {shot.ingredients.map((_, i) => (
           <div key={i} className="flex items-center gap-2 py-1.5 border-b border-white/15">
             <span className="text-white/60">&#9679;</span>
-            <span>{ing}</span>
+            <span>{t(`shot.${DAY_ABBR[current]}.ingredient.${i}`)}</span>
           </div>
         ))}
 

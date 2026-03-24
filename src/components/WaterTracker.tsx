@@ -46,7 +46,7 @@ export default function WaterTracker() {
           >
             <div className="text-xl mb-0.5">{glasses[i] ? '✅' : '💧'}</div>
             <div className="text-[10px] font-bold text-content-muted">{glass.time}</div>
-            <div className="text-[10px] text-content-muted">{glass.label}</div>
+            <div className="text-[10px] text-content-muted">{t(`water.glass.${i}`)}</div>
           </div>
         ))}
       </div>
