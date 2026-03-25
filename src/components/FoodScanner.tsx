@@ -60,11 +60,11 @@ export default function FoodScanner() {
       });
 
       if (!res.ok) {
-        const errData = await res.json();
+        const errData = await res.json().catch(() => ({ error: 'Unknown error' }));
         if (errData.error === 'API key not configured') {
           setError(t('scan.no_key'));
         } else {
-          setError(t('scan.error'));
+          setError(`${t('scan.error')} (${errData.details || errData.error || res.status})`);
         }
         return;
       }
