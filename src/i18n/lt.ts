@@ -1394,6 +1394,27 @@ const lt: Record<string, string> = {
   'landing.footer.privacy': 'Privatumas',
   'landing.footer.terms': 'Sąlygos',
 
+  // Scan My Plate
+  'scan.title': 'Nuskenuokite lėkštę',
+  'scan.subtitle': 'Nufotografuokite ir gaukite kalorijų įvertinimą',
+  'scan.button': 'Fotografuoti arba įkelti',
+  'scan.analyzing': 'Analizuojame maistą...',
+  'scan.results': 'Rezultatai',
+  'scan.item': 'Maisto produktas',
+  'scan.grams': 'Gramai',
+  'scan.calories': 'Kalorijos',
+  'scan.protein': 'Baltymai',
+  'scan.carbs': 'Angliavandeniai',
+  'scan.fat': 'Riebalai',
+  'scan.total': 'Iš viso',
+  'scan.scan_another': 'Skenuoti dar kartą',
+  'scan.error': 'Nepavyko išanalizuoti nuotraukos. Bandykite dar kartą.',
+  'scan.no_key': 'Maisto skeneris dar nesukonfigūruotas.',
+
+  // Section: Scan
+  'section.scan.title': '📷 Nuskenuokite lėkštę',
+  'section.scan.subtitle': 'Nufotografuokite ir gaukite kalorijų įvertinimą',
+
   // Common
   'common.cal': 'kcal',
   'common.loading': 'Kraunama...',

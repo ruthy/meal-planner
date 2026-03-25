@@ -1381,6 +1381,27 @@ const he: Record<string, string> = {
   'reminder.14.title': 'מים אחרונים',
   'reminder.14.message': 'כוס המים האחרונה של היום. כל הכבוד!',
 
+  // Scan My Plate
+  'scan.title': 'סריקת הצלחת',
+  'scan.subtitle': 'צלמי תמונה וקבלי הערכת קלוריות מיידית',
+  'scan.button': 'צלמי או העלי תמונה',
+  'scan.analyzing': 'מנתח את האוכל...',
+  'scan.results': 'תוצאות',
+  'scan.item': 'פריט מזון',
+  'scan.grams': 'גרמים',
+  'scan.calories': 'קלוריות',
+  'scan.protein': 'חלבון',
+  'scan.carbs': 'פחמימות',
+  'scan.fat': 'שומן',
+  'scan.total': 'סה״כ',
+  'scan.scan_another': 'סריקה נוספת',
+  'scan.error': 'לא ניתן לנתח את התמונה. נסי שוב.',
+  'scan.no_key': 'סורק המזון עדיין לא מוגדר.',
+
+  // Section: Scan
+  'section.scan.title': '📷 סריקת הצלחת',
+  'section.scan.subtitle': 'צלמי תמונה וקבלי הערכת קלוריות מיידית',
+
   // Common
   'common.cal': 'קל׳',
   'common.loading': 'טוען...',

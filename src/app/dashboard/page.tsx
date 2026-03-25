@@ -14,6 +14,7 @@ import SleepHabits from '@/components/SleepHabits';
 import ShoppingList from '@/components/ShoppingList';
 import ExercisePlan from '@/components/ExercisePlan';
 import ProgressDashboard from '@/components/progress/ProgressDashboard';
+import FoodScanner from '@/components/FoodScanner';
 import { useAuth } from '@/contexts/AuthContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -49,6 +50,16 @@ export default function DashboardPage() {
           defaultOpen={true}
         >
           <ProgressDashboard />
+        </SectionWrap>
+
+        {/* Scan My Plate */}
+        <SectionWrap
+          title={t('section.scan.title')}
+          subtitle={t('section.scan.subtitle')}
+          barClass="bg-brand-green"
+          defaultOpen={false}
+        >
+          <FoodScanner />
         </SectionWrap>
 
         {/* Calculator */}

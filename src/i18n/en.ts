@@ -1389,6 +1389,27 @@ const en: Record<string, string> = {
   'landing.footer.privacy': 'Privacy',
   'landing.footer.terms': 'Terms',
 
+  // Scan My Plate
+  'scan.title': 'Scan My Plate',
+  'scan.subtitle': 'Take a photo and get instant calorie estimates',
+  'scan.button': 'Take Photo or Upload',
+  'scan.analyzing': 'Analyzing your food...',
+  'scan.results': 'Results',
+  'scan.item': 'Food Item',
+  'scan.grams': 'Grams',
+  'scan.calories': 'Calories',
+  'scan.protein': 'Protein',
+  'scan.carbs': 'Carbs',
+  'scan.fat': 'Fat',
+  'scan.total': 'Total',
+  'scan.scan_another': 'Scan Another',
+  'scan.error': 'Could not analyze the image. Please try again.',
+  'scan.no_key': 'Food scanner is not configured yet.',
+
+  // Section: Scan
+  'section.scan.title': '📷 Scan My Plate',
+  'section.scan.subtitle': 'Snap a photo, get instant calorie estimates',
+
   // Common
   'common.cal': 'cal',
   'common.loading': 'Loading...',
