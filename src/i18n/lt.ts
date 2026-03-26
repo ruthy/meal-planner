@@ -1546,6 +1546,48 @@ const lt: Record<string, string> = {
   'landing.footer.privacy': 'Privatumas',
   'landing.footer.terms': 'Sąlygos',
 
+  'privacy.back': 'Grįžti į pradžią',
+  'privacy.title': 'Privatumo politika',
+  'privacy.last_updated': 'Paskutinis atnaujinimas: 2026 m. kovo 26 d.',
+  'privacy.s1.title': '1. Informacija, kurią renkame',
+  'privacy.s1.body':
+    'Kurdami paskyrą, renkame jūsų vardą, el. pašto adresą ir slaptažodį. Naudojantis programa, saugome maisto sekimo duomenis, vandens suvartojimą, mankštos įrašus, svorio duomenis ir skaičiuoklės nustatymus.',
+  'privacy.s2.title': '2. Kaip naudojame informaciją',
+  'privacy.s2.body':
+    'Naudojame duomenis DailyBite patirčiai personalizuoti. Neparduodame ir nesidalijame jūsų duomenimis su trečiosiomis šalimis rinkodaros tikslais.',
+  'privacy.s3.title': '3. Duomenų saugojimas ir saugumas',
+  'privacy.s3.body':
+    'Duomenys saugiai saugomi naudojant Supabase su šifravimu. Naudojame pramonės standartų saugumo praktikas.',
+  'privacy.s4.title': '4. Slapukai ir analitika',
+  'privacy.s4.body': 'Naudojame Vercel Analytics anoniminei statistikai. Nenaudojame trečiųjų šalių reklamos slapukų.',
+  'privacy.s5.title': '5. Jūsų teisės',
+  'privacy.s5.body':
+    'Galite bet kada pasiekti, atnaujinti ar ištrinti savo paskyrą. Kreipkitės adresu support@dailybite.fit.',
+  'privacy.s6.title': '6. Vaikai',
+  'privacy.s6.body': 'DailyBite skirta suaugusiems (moterims 40+). Nesąmoningai nerenkame vaikų iki 13 metų duomenų.',
+  'privacy.s7.title': '7. Susisiekite',
+  'privacy.s7.body': 'Klausimai? Rašykite support@dailybite.fit.',
+  'terms.back': 'Grįžti į pradžią',
+  'terms.title': 'Naudojimo sąlygos',
+  'terms.last_updated': 'Paskutinis atnaujinimas: 2026 m. kovo 26 d.',
+  'terms.s1.title': '1. Sąlygų priėmimas',
+  'terms.s1.body': 'Kurdami paskyrą ar naudodami DailyBite, sutinkate su šiomis sąlygomis.',
+  'terms.s2.title': '2. Paslaugos aprašymas',
+  'terms.s2.body':
+    'DailyBite yra sveikatos ir mitybos programa su be gliuteno valgiaraščiais, kalorijų skaičiuokle ir mankštos programomis. Tai nėra medicininė konsultacija.',
+  'terms.s3.title': '3. Medicininis atsisakymas',
+  'terms.s3.body':
+    'DailyBite nėra profesionalios medicininės konsultacijos pakaitalas. Visada pasitarkite su gydytoju prieš pradėdami bet kokią dietą ar mankštos programą.',
+  'terms.s4.title': '4. Vartotojo paskyros',
+  'terms.s4.body': 'Jūs atsakote už paskyros duomenų konfidencialumą. Sutinkate pateikti tikslią informaciją.',
+  'terms.s5.title': '5. Leistinas naudojimas',
+  'terms.s5.body': 'Sutinkate naudoti DailyBite tik asmeniniais, nekomerciniais tikslais.',
+  'terms.s6.title': '6. Atsakomybės ribojimas',
+  'terms.s6.body':
+    'DailyBite teikiama „tokia, kokia yra" be jokių garantijų. Nesame atsakingi už sveikatos rezultatus.',
+  'terms.s7.title': '7. Susisiekite',
+  'terms.s7.body': 'Klausimai? Rašykite support@dailybite.fit.',
+
   // Scan My Plate
   'scan.title': 'Nuskenuokite lėkštę',
   'scan.subtitle': 'Nufotografuokite ir gaukite kalorijų įvertinimą',

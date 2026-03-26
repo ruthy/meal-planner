@@ -1607,6 +1607,57 @@ const en: Record<string, string> = {
   'landing.footer.privacy': 'Privacy',
   'landing.footer.terms': 'Terms',
 
+  // Privacy Policy
+  'privacy.back': 'Back to Home',
+  'privacy.title': 'Privacy Policy',
+  'privacy.last_updated': 'Last updated: March 26, 2026',
+  'privacy.s1.title': '1. Information We Collect',
+  'privacy.s1.body':
+    'When you create an account, we collect your name, email address, and password. When you use the app, we store your meal tracking data, water intake, exercise completion, weight entries, and calculator settings. If you use the Plate Scanner, photos are processed by AI and are not stored on our servers.',
+  'privacy.s2.title': '2. How We Use Your Information',
+  'privacy.s2.body':
+    'We use your data to provide and personalize the DailyBite experience — including meal plans, calorie targets, progress tracking, and daily reminders. We do not sell, rent, or share your personal data with third parties for marketing purposes.',
+  'privacy.s3.title': '3. Data Storage & Security',
+  'privacy.s3.body':
+    'Your data is stored securely using Supabase (hosted on AWS) with encryption at rest and in transit. We use industry-standard security practices including password hashing and secure authentication tokens. Only you can access your personal health data.',
+  'privacy.s4.title': '4. Cookies & Analytics',
+  'privacy.s4.body':
+    'We use Vercel Analytics to understand how the app is used (page views, device types). This data is anonymous and aggregated. We do not use third-party advertising cookies or trackers.',
+  'privacy.s5.title': '5. Your Rights',
+  'privacy.s5.body':
+    'You can access, update, or delete your account and all associated data at any time. To delete your account, contact us at support@dailybite.fit. We will process your request within 30 days. If you are in the EU, you have additional rights under GDPR including data portability and the right to be forgotten.',
+  'privacy.s6.title': '6. Children',
+  'privacy.s6.body':
+    'DailyBite is designed for adults (women 40+). We do not knowingly collect data from children under 13. If you believe a child has provided us with personal information, please contact us immediately.',
+  'privacy.s7.title': '7. Contact Us',
+  'privacy.s7.body':
+    'If you have questions about this Privacy Policy or your data, contact us at support@dailybite.fit.',
+
+  // Terms of Service
+  'terms.back': 'Back to Home',
+  'terms.title': 'Terms of Service',
+  'terms.last_updated': 'Last updated: March 26, 2026',
+  'terms.s1.title': '1. Acceptance of Terms',
+  'terms.s1.body':
+    'By creating an account or using DailyBite, you agree to these Terms of Service. If you do not agree, please do not use the app. We may update these terms from time to time, and continued use constitutes acceptance of changes.',
+  'terms.s2.title': '2. Description of Service',
+  'terms.s2.body':
+    'DailyBite is a health and nutrition app that provides gluten-free meal plans, calorie tracking, water tracking, exercise programs, and related wellness tools. The app is designed as a general wellness tool and does not provide medical advice.',
+  'terms.s3.title': '3. Medical Disclaimer',
+  'terms.s3.body':
+    'DailyBite is not a substitute for professional medical advice, diagnosis, or treatment. Always consult your physician or qualified health provider before starting any diet, exercise program, or nutrition plan. The calorie targets, meal plans, and health tips provided are for informational purposes only.',
+  'terms.s4.title': '4. User Accounts',
+  'terms.s4.body':
+    'You are responsible for maintaining the confidentiality of your account credentials. You agree to provide accurate information and to update it as needed. We reserve the right to suspend accounts that violate these terms.',
+  'terms.s5.title': '5. Acceptable Use',
+  'terms.s5.body':
+    'You agree to use DailyBite only for personal, non-commercial purposes. You may not reverse-engineer the app, scrape data, or use it in any way that could harm the service or other users.',
+  'terms.s6.title': '6. Limitation of Liability',
+  'terms.s6.body':
+    'DailyBite is provided "as is" without warranties of any kind. We are not liable for any health outcomes, weight changes, or dietary effects resulting from use of the app. Your use of DailyBite is at your own risk.',
+  'terms.s7.title': '7. Contact',
+  'terms.s7.body': 'For questions about these Terms, contact us at support@dailybite.fit.',
+
   // Scan My Plate
   'scan.title': 'Scan My Plate',
   'scan.subtitle': 'Take a photo and get instant calorie estimates',
