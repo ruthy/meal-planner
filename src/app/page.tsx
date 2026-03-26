@@ -391,10 +391,16 @@ export default function LandingPage() {
             &copy; 2026 {t('app_name')} &middot; {t('footer.copyright')}
           </div>
           <div className="flex gap-4">
-            <a href="#" className="hover:text-white transition-colors no-underline text-white/70">
+            <a
+              href="https://www.dailybite.fit/privacy"
+              className="hover:text-white transition-colors no-underline text-white/70"
+            >
               {t('landing.footer.privacy')}
             </a>
-            <a href="#" className="hover:text-white transition-colors no-underline text-white/70">
+            <a
+              href="https://www.dailybite.fit/terms"
+              className="hover:text-white transition-colors no-underline text-white/70"
+            >
               {t('landing.footer.terms')}
             </a>
           </div>
