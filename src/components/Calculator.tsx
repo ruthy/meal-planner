@@ -38,7 +38,7 @@ export default function Calculator({ onTargetChange }: CalculatorProps) {
 
     const a = parseFloat(age) || 0;
     if (!a || !wt || !ht) {
-      alert('Please fill in all fields.');
+      alert(t('calc.error_fill_all'));
       return;
     }
 

@@ -180,6 +180,7 @@ const lt: Record<string, string> = {
   'gut.recipe.sardine_wraps.instructions': 'Susmulkinkite, sudėkite į salotų lapą, suvyniokite.',
 
   // Calculator
+  'calc.error_fill_all': 'Prašome užpildyti visus laukus.',
   'calc.header': 'Kalorijų skaičiuoklė',
   'calc.description': 'Apskaičiuokite savo asmeninį dienos kalorijų tikslą pagal kūno rodiklius ir aktyvumo lygį.',
   'calc.woman': 'Moteris',

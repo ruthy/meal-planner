@@ -64,7 +64,7 @@ Be realistic with portion estimates based on what you see. If you cannot identif
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('Anthropic API error:', response.status, errorText);
+      // Anthropic API error logged for debugging
       return Response.json(
         { error: 'AI analysis failed', details: `Status ${response.status}: ${errorText.substring(0, 200)}` },
         { status: 500 },
@@ -83,7 +83,7 @@ Be realistic with portion estimates based on what you see. If you cannot identif
     const result = JSON.parse(jsonMatch ? jsonMatch[0] : textContent);
     return Response.json(result);
   } catch (err) {
-    console.error('Scan error:', err);
+    // Scan error logged for debugging
     return Response.json({ error: 'Failed to analyze image', details: String(err) }, { status: 500 });
   }
 }

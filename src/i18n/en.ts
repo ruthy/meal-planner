@@ -246,6 +246,7 @@ const en: Record<string, string> = {
     'Mash or dice all ingredients. Place on lettuce leaves. Roll up, cut in half. Enjoy — a perfect wrap!',
 
   // Calculator
+  'calc.error_fill_all': 'Please fill in all fields.',
   'calc.header': 'Daily Calorie Calculator',
   'calc.description': 'Calculate your personal daily calorie target based on your body and activity level.',
   'calc.woman': 'Woman',

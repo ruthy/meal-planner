@@ -187,7 +187,7 @@ const he: Record<string, string> = {
     'לקצוץ את הבטטה, הגזר והבצל לקוביות. להוסיף לסיר יחד עם העדשים ו-3 כוסות מים או ציר ירקות. לבשל על אש בינונית כ-20 דקות עד שהכל רך. לטחון בבלנדר עד לקבלת מרקם חלק וקטיפתי.',
   'gut.recipe.orange_soup.notes': 'שיטת הכנה ייחודית זו מדהימה את הטעמים. אפשרי להוסיף כף קרם קוקוס למרק.',
 
-  'gut.recipe.quinoa_patties.name': 'קציצות קינואה ממכרות!',
+  'gut.recipe.quinoa_patties.name': 'קציצות קינואה',
   'gut.recipe.quinoa_patties.ingredients':
     '• כוס קינואה מבושלת\n• 2 חצילים קלויים בתנור\n• 4 כפות טחינה\n• בצל סגול חתוך דק',
   'gut.recipe.quinoa_patties.instructions':
@@ -219,7 +219,7 @@ const he: Record<string, string> = {
   'gut.recipe.keto_meal.instructions':
     'להכין חביתה או 3 ביצי עין. לפתוח קופסת סרדינים, להעדיף בשמן זית. להתארגן על שילוב נכון עיכולית: ירקות ועלים ירוקים, מלח, פלפל לפי הטעם. וזהו!',
 
-  'gut.recipe.fish_patties.name': 'קציצות דג אפויות!',
+  'gut.recipe.fish_patties.name': 'קציצות דג אפויות',
   'gut.recipe.fish_patties.ingredients':
     '• כ-500 גרם דג קוד/מושט\n• לחתוך לקוביות דקות דקות (עדיף בעצמך)\n• ביצה אחת\n• שתי כפות פירורי כוסמת ללא גלוטן או קמח שקדים (לא חובה)\n• מלח ופלפל לפי הטעם\n• שמן זית למריחה',
   'gut.recipe.fish_patties.instructions':
@@ -238,6 +238,7 @@ const he: Record<string, string> = {
     'למעוך או לחתוך לקוביות את כל המרכיבים. לסדר על עלי חסה, לגלגל ולחתוך באמצע. ארוחה קלה, מזינה ועשירה בחלבון.',
 
   // Calculator
+  'calc.error_fill_all': 'נא למלא את כל השדות.',
   'calc.header': 'מחשבון קלוריות יומי',
   'calc.description': 'חשבי את יעד הקלוריות היומי שלך לפי הנתונים ורמת הפעילות.',
   'calc.woman': 'אישה',
