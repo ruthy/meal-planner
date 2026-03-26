@@ -642,6 +642,7 @@ const he: Record<string, string> = {
   'landing.auth.error_name': 'נא להזין את השם המלא.',
   'landing.auth.error_email': 'נא להזין כתובת אימייל תקינה.',
   'landing.auth.error_password': 'הסיסמה חייבת להיות לפחות 6 תווים.',
+  'landing.auth.already_signed_in': 'את כבר מחוברת!',
 
   'landing.social.title': 'מתוכנן לתוצאות אמיתיות',
   'landing.social.stat1': 'קלוריות/יום בתוכנית מאוזנת',

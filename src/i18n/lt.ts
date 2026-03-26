@@ -1377,6 +1377,7 @@ const lt: Record<string, string> = {
   'landing.auth.error_name': 'Įveskite savo vardą ir pavardę.',
   'landing.auth.error_email': 'Įveskite galiojantį el. pašto adresą.',
   'landing.auth.error_password': 'Slaptažodis turi būti bent 6 simbolių.',
+  'landing.auth.already_signed_in': 'Jūs jau esate prisijungę!',
 
   'landing.social.title': 'Sukurta realiems rezultatams',
   'landing.social.stat1': 'kcal/d. subalansuotas planas',

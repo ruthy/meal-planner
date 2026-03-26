@@ -1372,6 +1372,7 @@ const en: Record<string, string> = {
   'landing.auth.error_name': 'Please enter your full name.',
   'landing.auth.error_email': 'Please enter a valid email address.',
   'landing.auth.error_password': 'Password must be at least 6 characters.',
+  'landing.auth.already_signed_in': "You're already signed in!",
 
   'landing.social.title': 'Designed for real results',
   'landing.social.stat1': 'cal/day balanced plan',

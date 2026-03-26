@@ -225,18 +225,29 @@ export default function LandingPage() {
       </section>
 
       {/* ===== SIGN UP / SIGN IN ===== */}
-      {!user && (
-        <section
-          id="auth"
-          className="px-5 py-16 md:py-20"
-          style={{ background: 'linear-gradient(160deg, #065F46 0%, #1D9E75 100%)' }}
-        >
-          <div className="max-w-[380px] mx-auto">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-2">{t('landing.auth.title')}</h2>
-              <p className="text-white/70 text-sm">{t('landing.auth.subtitle')}</p>
-            </div>
+      <section
+        id="auth"
+        className="px-5 py-16 md:py-20"
+        style={{ background: 'linear-gradient(160deg, #065F46 0%, #1D9E75 100%)' }}
+      >
+        <div className="max-w-[380px] mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-2">{t('landing.auth.title')}</h2>
+            <p className="text-white/70 text-sm">{t('landing.auth.subtitle')}</p>
+          </div>
 
+          {user ? (
+            <div className="bg-white rounded-2xl p-8 shadow-2xl text-center">
+              <div className="text-4xl mb-4">✅</div>
+              <h3 className="text-lg font-bold text-content mb-2">{t('landing.auth.already_signed_in')}</h3>
+              <Link
+                href="/dashboard"
+                className="inline-flex items-center justify-center w-full py-3 bg-brand-green text-white border-none rounded-lg text-[15px] font-bold no-underline hover:bg-brand-green-dark transition-colors"
+              >
+                {t('landing.hero.cta_dashboard')}
+              </Link>
+            </div>
+          ) : (
             <div className="bg-white rounded-2xl p-6 shadow-2xl">
               {/* Tabs */}
               <div className="flex bg-surface-bg rounded-lg p-0.5 mb-5">
@@ -342,9 +353,9 @@ export default function LandingPage() {
                 </button>
               </div>
             </div>
-          </div>
-        </section>
-      )}
+          )}
+        </div>
+      </section>
 
       {/* ===== BILINGUAL CALLOUT ===== */}
       <section className="px-5 py-10">
