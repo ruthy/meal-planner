@@ -1363,8 +1363,20 @@ const lt: Record<string, string> = {
   'landing.feature.exercise.desc': '7–12 minučių švelni mankšta su integruotomis YouTube pamokomis.',
   'landing.feature.shots.title': 'Rytiniai šotai',
   'landing.feature.shots.desc': 'MetaBoost sveikatingumo šotai skirti medžiagų apykaitai ir hormonų pusiausvyrai.',
+  'landing.feature.scanner.title': 'Lėkštės skeneris',
+  'landing.feature.scanner.desc':
+    'Nufotografuokite savo patiekalą ir mūsų AI akimirksniu atpažins maistą, įvertins porcijas ir apskaičiuos kalorijas bei makroelementus.',
   'landing.feature.progress.title': 'Pažangos sekimas',
   'landing.feature.progress.desc': 'Svorio tendencijų grafikai, dienų serijos ir užbaigimo sekimas.',
+
+  'landing.auth.title': 'Prisijunkite prie DailyBite',
+  'landing.auth.subtitle': 'Susikurkite nemokamą paskyrą ir pradėkite savo kelionę šiandien.',
+  'landing.auth.name_placeholder': 'Jūsų vardas ir pavardė',
+  'landing.auth.password_create': 'Sukurkite slaptažodį (min. 6 simboliai)',
+  'landing.auth.password_enter': 'Jūsų slaptažodis',
+  'landing.auth.error_name': 'Įveskite savo vardą ir pavardę.',
+  'landing.auth.error_email': 'Įveskite galiojantį el. pašto adresą.',
+  'landing.auth.error_password': 'Slaptažodis turi būti bent 6 simbolių.',
 
   'landing.social.title': 'Sukurta realiems rezultatams',
   'landing.social.stat1': 'kcal/d. subalansuotas planas',
