@@ -138,7 +138,7 @@ const en: Record<string, string> = {
   'gut.recipe.buckwheat_tortilla.instructions':
     'Soak buckwheat in water overnight. Drain and blend with water until smooth. Let batter rest 4–12 hours (optional, helps digestibility). Heat a pan, spray lightly. Pour thin circles of batter. Cook on medium heat, flip when edges lift. Fill with vegetables, avocado, tahini, or any toppings.',
   'gut.recipe.buckwheat_tortilla.notes':
-    'For protein: make half tortilla, half sprouted lentils. Buckwheat is gluten-free and easier to digest than wheat tortillas.',
+    'For protein: make half tortilla, half sprouted lentils. 100% gluten-free and easy to digest.',
 
   'gut.recipe.orange_soup.name': 'Orange Lentil Soup with a Twist',
   'gut.recipe.orange_soup.ingredients':
@@ -162,7 +162,7 @@ const en: Record<string, string> = {
 
   'gut.recipe.baked_falafel.name': 'Baked Falafel',
   'gut.recipe.baked_falafel.ingredients':
-    '• 2 cups frozen chickpeas (or soaked 12+ hours)\n• ½ cup bread crumbs\n• 1 cup parsley leaves\n• 1 cup coriander leaves\n• 1 onion\n• 4 garlic cloves\n• Spices: salt, ¼ tsp pepper, cumin\n• 1 tsp baking soda (aluminum-free)\n• Olive oil spray',
+    '• 2 cups frozen chickpeas (or soaked 12+ hours)\n• ½ cup gluten-free bread crumbs (or almond flour)\n• 1 cup parsley leaves\n• 1 cup coriander leaves\n• 1 onion\n• 4 garlic cloves\n• Spices: salt, ¼ tsp pepper, cumin\n• 1 tsp baking soda (aluminum-free)\n• Olive oil spray',
   'gut.recipe.baked_falafel.instructions':
     'Blend all ingredients except baking soda in a food processor until one smooth mixture. Let rest in fridge for 30 minutes. Add baking soda, mix well. Form balls and place on oiled baking tray. Spray with olive oil. Bake at preheated 200°C for 30 minutes.',
   'gut.recipe.baked_falafel.notes':
@@ -182,7 +182,7 @@ const en: Record<string, string> = {
 
   'gut.recipe.fish_patties.name': 'Baked Fish Patties',
   'gut.recipe.fish_patties.ingredients':
-    '• ~500g cod/haddock fish, diced small\n• 1 egg\n• 2 tbsp buckwheat bread crumbs (optional)\n• Salt & pepper to taste\n• Olive oil for coating',
+    '• ~500g cod/haddock fish, diced small\n• 1 egg\n• 2 tbsp GF buckwheat crumbs or almond flour (optional)\n• Salt & pepper to taste\n• Olive oil for coating',
   'gut.recipe.fish_patties.instructions':
     'Mix all ingredients, form small patties. Flatten slightly on a baking tray, brush with olive oil. Bake at 180°C for 20–30 minutes.',
 

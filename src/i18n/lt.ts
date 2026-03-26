@@ -130,7 +130,7 @@ const lt: Record<string, string> = {
     'Pakepinkite svogūną, pridėkite supjaustytą tofu, pagardinkite. Kepkite 15 min.',
   'gut.recipe.baked_falafel.name': 'Keptas falafelis',
   'gut.recipe.baked_falafel.ingredients':
-    '• 2 stiklinės avinžirnių\n• Trupiniai, petražolės, kalendra\n• Svogūnas, česnakas\n• Prieskoniai, soda',
+    '• 2 stiklinės avinžirnių\n• Be gliuteno trupiniai arba migdolų miltai, petražolės, kalendra\n• Svogūnas, česnakas\n• Prieskoniai, soda',
   'gut.recipe.baked_falafel.instructions':
     'Suplakite, atšaldykite 30 min, suformuokite rutuliukus. Kepkite 200°C 30 min.',
   'gut.recipe.baked_falafel.notes': 'Kepkite, nekepkite aliejuje.',
@@ -142,7 +142,7 @@ const lt: Record<string, string> = {
   'gut.recipe.keto_meal.instructions': 'Iškepkite kiaušinius, patiekite su sardinėmis, avokadu ir salotomis.',
   'gut.recipe.fish_patties.name': 'Kepti žuvies kotletai',
   'gut.recipe.fish_patties.ingredients':
-    '• ~500g menkės\n• 1 kiaušinis\n• Trupiniai\n• Druska, pipirai\n• Alyvuogių aliejus',
+    '• ~500g menkės\n• 1 kiaušinis\n• Be gliuteno trupiniai arba migdolų miltai\n• Druska, pipirai\n• Alyvuogių aliejus',
   'gut.recipe.fish_patties.instructions': 'Sumaišykite, suformuokite, kepkite 180°C 20–30 min.',
   'gut.recipe.quinoa_avocado.name': 'Bolivinės balandos su avokadu',
   'gut.recipe.quinoa_avocado.ingredients':
