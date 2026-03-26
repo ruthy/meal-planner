@@ -15,6 +15,7 @@ import ShoppingList from '@/components/ShoppingList';
 import ExercisePlan from '@/components/ExercisePlan';
 import ProgressDashboard from '@/components/progress/ProgressDashboard';
 import FoodScanner from '@/components/FoodScanner';
+import GutHealth from '@/components/GutHealth';
 import { useAuth } from '@/contexts/AuthContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -100,6 +101,16 @@ export default function DashboardPage() {
           defaultOpen={true}
         >
           <WaterTracker />
+        </SectionWrap>
+
+        {/* Gut Health */}
+        <SectionWrap
+          title={t('section.gut.title')}
+          subtitle={t('section.gut.subtitle')}
+          barClass="bg-gradient-to-br from-emerald-600 to-teal-500"
+          defaultOpen={false}
+        >
+          <GutHealth />
         </SectionWrap>
 
         {/* Key Rules */}

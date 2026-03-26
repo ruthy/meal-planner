@@ -40,6 +40,163 @@ const en: Record<string, string> = {
   'section.shopping.subtitle': 'Everything you need for the week',
   'section.exercise.title': 'Exercise Plan',
   'section.exercise.subtitle': '7–12 min daily · Low impact · No jumping',
+  'section.gut.title': 'Gut Health',
+  'section.gut.subtitle': 'Bloating tracker · 48h detox · Anti-bloat recipes',
+
+  // Gut Health
+  'gut.tab.tracker': 'Tracker',
+  'gut.tab.detox': '48h Detox',
+  'gut.tab.recipes': 'Recipes',
+
+  // Tracker
+  'gut.tracker.intro':
+    'Track what you eat and how your body responds. After 5–7 days, patterns will reveal which foods trigger bloating for you personally.',
+  'gut.tracker.what_ate': 'What did you eat?',
+  'gut.tracker.what_ate_placeholder': 'Describe your meals today...',
+  'gut.tracker.snacks': 'Snacks',
+  'gut.tracker.snacks_placeholder': 'Any snacks between meals?',
+  'gut.tracker.stomach_feeling': 'Stomach feeling (1 = worst, 5 = best)',
+  'gut.tracker.worst': '😣 Worst',
+  'gut.tracker.best': '😊 Best',
+  'gut.tracker.bloating': 'Bloating',
+  'gut.tracker.fatigue': 'Fatigue / Heaviness',
+  'gut.tracker.when_bloating': 'When did bloating appear?',
+  'gut.tracker.when_placeholder': 'e.g. 2 hours after lunch',
+  'gut.tracker.notes': 'Notes',
+  'gut.tracker.notes_placeholder': 'Anything else you noticed?',
+  'gut.tracker.save': 'Save Entry',
+  'gut.tracker.saved': 'Saved!',
+
+  // Triggers
+  'gut.triggers.title': 'Common Triggers Checklist',
+  'gut.triggers.subtitle': 'Tap to mark: ✓ bothers me · ? not sure · ✗ no issue',
+  'gut.triggers.legend': '✓ = bothers me · ? = not sure · ✗ = no issue · — = not checked',
+  'gut.trigger.white_bread': 'White bread / pastries (empty carbs)',
+  'gut.trigger.dairy': 'Dairy (milk, cheese, yogurt)',
+  'gut.trigger.legumes': 'Legumes (lentils, beans, chickpeas)',
+  'gut.trigger.cruciferous': 'Cruciferous veggies (cabbage, broccoli, cauliflower)',
+  'gut.trigger.raw_veggies': 'Raw vegetables / large salads',
+  'gut.trigger.carbonated': 'Carbonated drinks / coffee on empty stomach',
+  'gut.trigger.fast_eating': 'Eating too fast / not chewing well',
+  'gut.trigger.snacking': 'Snacking between meals',
+  'gut.trigger.sugar_subs': 'Sugar substitutes / gum / energy drinks',
+  'gut.trigger.gluten': 'Gluten',
+
+  // Analysis
+  'gut.analysis.title': 'Weekly Self-Analysis',
+  'gut.analysis.q1': 'What repeated on bloating days?',
+  'gut.analysis.q2': 'Is there a difference between morning and evening?',
+  'gut.analysis.q3': 'What was different on calm body days?',
+  'gut.analysis.q4': 'What changes will I try next week?',
+
+  // 48h Detox
+  'gut.detox.title': '48-Hour Express Reset',
+  'gut.detox.intro':
+    'Give your digestive system maximum rest with only fruits and greens for 48 hours. Prefer organic produce — pesticides can cause bloating, especially for sensitive stomachs.',
+  'gut.detox.morning.title': 'Morning — Green Juice',
+  'gut.detox.morning.desc':
+    'Green juice with one fruit of choice and a small piece of peeled ginger. Green base: lettuce, celery stalks, arugula, spinach, or sprouts.',
+  'gut.detox.noon.title': 'Noon — Greens & Fruit Salad',
+  'gut.detox.noon.desc': 'Choose two types of green leaves (your choice) with 2 chopped fruits only.',
+  'gut.detox.evening.title': 'Evening — Greens & Fruit Salad',
+  'gut.detox.evening.desc': 'Choose two types of green leaves with 2 chopped fruits only.',
+  'gut.detox.tip_title': 'Feeling hungry?',
+  'gut.detox.tip':
+    "That's okay — the hunger is for nutritional values, not food itself. Try shifting focus from hunger to another activity.",
+  'gut.detox.improve_title': 'If symptoms improve:',
+  'gut.detox.improve': 'You can add a vegetable salad and a handful of soaked, peeled almonds for dinner.',
+
+  // Recipes
+  'gut.recipes.intro': '13 quick anti-bloat recipes — gluten-free, gut-friendly, and delicious.',
+  'gut.recipes.min': 'min',
+  'gut.recipes.servings': 'servings',
+  'gut.recipes.ingredients': 'Ingredients',
+  'gut.recipes.instructions': 'How to make',
+
+  'gut.recipe.celery_shake.name': 'Celery Shake',
+  'gut.recipe.celery_shake.ingredients':
+    '• 1/3 bundle of celery\n• 3–6 lettuce leaves\n• 1 date for sweetness\n• 1 green apple (optional)',
+  'gut.recipe.celery_shake.instructions':
+    'Blend everything together. Make sure ingredients are available and preferably organic. Best enjoyed as a morning drink, rich in fiber for cleansing and detox.',
+  'gut.recipe.celery_shake.notes': 'Reduce liquid and order supplements from a pharmacy for best results.',
+
+  'gut.recipe.chia_pudding.name': 'Indulgent Chia Pudding',
+  'gut.recipe.chia_pudding.ingredients':
+    '• 3 tbsp chia seeds\n• ½ cup almond milk (sugar-free) or coconut cream\n• ¼ tsp cinnamon\n• 1 tsp vanilla extract\n• 1 date for sweetness',
+  'gut.recipe.chia_pudding.instructions':
+    'Mix chia seeds, almond milk (or coconut cream), cinnamon, vanilla, and date in a glass. Let sit for 30 minutes minimum — the chia will thicken. Top with fruits, cacao nibs, coconut flakes, almond butter, or nuts.',
+
+  'gut.recipe.rich_salad.name': 'Rich Veggie Salad',
+  'gut.recipe.rich_salad.ingredients':
+    '• ½ head organic lettuce\n• Handful of organic rocket leaves\n• 1 thinly sliced carrot\n• ½ cucumber sliced\n• Handful of sprouted quinoa/broccoli/alfalfa sprouts\n• 1 cup soaked, peeled almonds\n• Fresh parsley\n• Basil & parsley, finely chopped',
+  'gut.recipe.rich_salad.instructions':
+    'Toss everything into a salad. Optional: add half an avocado.\nDressing: lemon juice, organic apple cider vinegar, 2 tbsp cold-pressed olive oil (up to 0.8% acidity), salt & pepper to taste.\nOptional add-ins: dried cranberries (no sugar), apple sauce, turmeric or ginger root. Can use stevia instead of sweetener.',
+
+  'gut.recipe.buckwheat_tortilla.name': 'Green Buckwheat Tortillas',
+  'gut.recipe.buckwheat_tortilla.ingredients':
+    '• 150g green buckwheat\n• 2–2.25 cups water\n• ½ tsp Himalayan salt\n• Seasoning: Italian mix, non-stick spray\n• (Optional: fresh herbs)',
+  'gut.recipe.buckwheat_tortilla.instructions':
+    'Soak buckwheat in water overnight. Drain and blend with water until smooth. Let batter rest 4–12 hours (optional, helps digestibility). Heat a pan, spray lightly. Pour thin circles of batter. Cook on medium heat, flip when edges lift. Fill with vegetables, avocado, tahini, or any toppings.',
+  'gut.recipe.buckwheat_tortilla.notes':
+    'For protein: make half tortilla, half sprouted lentils. Buckwheat is gluten-free and easier to digest than wheat tortillas.',
+
+  'gut.recipe.orange_soup.name': 'Orange Lentil Soup with a Twist',
+  'gut.recipe.orange_soup.ingredients':
+    '• 1.5 cups sprouted lentils (any color)\n• 1 large sweet potato\n• 1 carrot\n• 1 white onion\n• Handful of coriander\n• Spices: turmeric, hawaij, Himalayan salt, red paprika',
+  'gut.recipe.orange_soup.instructions':
+    'Dice the sweet potato, carrot, onion. Place everything in a pot with lentils, add 3 cups water or vegetable broth. Cook on medium for about 20 minutes. Blend until smooth — this method preserves flavors and nutrients beautifully. Optional: add coconut cream on top.',
+  'gut.recipe.orange_soup.notes':
+    'Unique cooking method preserves maximum flavor. Add pumpkin seeds on top for extra nutrition.',
+
+  'gut.recipe.quinoa_patties.name': 'Quinoa Patties',
+  'gut.recipe.quinoa_patties.ingredients':
+    '• 1 cup cooked quinoa\n• 2 oven-roasted eggplants\n• 4 tbsp tahini\n• Finely diced purple onion',
+  'gut.recipe.quinoa_patties.instructions':
+    'Mix all ingredients into one mixture. Form thin, flat patties on a baking tray. Bake at 180–200°C for 12 minutes.',
+
+  'gut.recipe.tofu_shawarma.name': 'Tofu Shawarma',
+  'gut.recipe.tofu_shawarma.ingredients':
+    '• 2 packages non-GMO tofu\n• 1 large onion\n• 1 tbsp Jerusalem/shawarma spice mix',
+  'gut.recipe.tofu_shawarma.instructions':
+    'Dice onion, sauté in pan with oil. Cut tofu into shawarma strips, add to pan with spices. Cook covered on medium heat for 15 minutes. Optional: add coconut cream and serve as curry over rice.',
+
+  'gut.recipe.baked_falafel.name': 'Baked Falafel',
+  'gut.recipe.baked_falafel.ingredients':
+    '• 2 cups frozen chickpeas (or soaked 12+ hours)\n• ½ cup bread crumbs\n• 1 cup parsley leaves\n• 1 cup coriander leaves\n• 1 onion\n• 4 garlic cloves\n• Spices: salt, ¼ tsp pepper, cumin\n• 1 tsp baking soda (aluminum-free)\n• Olive oil spray',
+  'gut.recipe.baked_falafel.instructions':
+    'Blend all ingredients except baking soda in a food processor until one smooth mixture. Let rest in fridge for 30 minutes. Add baking soda, mix well. Form balls and place on oiled baking tray. Spray with olive oil. Bake at preheated 200°C for 30 minutes.',
+  'gut.recipe.baked_falafel.notes':
+    "Bake, don't fry! (Falafel tends to absorb oil when fried.) If using dried chickpeas, soak for 12+ hours. Add 2–3 tbsp tahini for extra richness.",
+
+  'gut.recipe.choco_dates.name': 'Chocolate-Covered Dates',
+  'gut.recipe.choco_dates.ingredients':
+    '• 20 Medjool dates\n• 20 whole almonds/walnuts\n• Favorite nut spread\n• 200g dark chocolate (100% preferred, no sugar)\n• Sweetness comes from the dates only',
+  'gut.recipe.choco_dates.instructions':
+    'Pit the dates. Melt chocolate in a bain-marie. Place a nut and a little spread inside each date. Add half tsp of your favorite spread (peanut butter, almond, etc.). Dip in chocolate. Place on parchment-lined tray and freeze.',
+
+  'gut.recipe.keto_meal.name': 'Keto Plate',
+  'gut.recipe.keto_meal.ingredients':
+    '• 3 eggs\n• 1 can sardines (in olive oil)\n• Avocado, sliced\n• Salad or chopped veggies\n• Lettuce leaves',
+  'gut.recipe.keto_meal.instructions':
+    'Make an omelette or 3 fried eggs. Open sardines (preferably in olive oil). Arrange with proper digestive order: vegetables and greens first, then protein. Salt, pepper to taste. Done!',
+
+  'gut.recipe.fish_patties.name': 'Baked Fish Patties',
+  'gut.recipe.fish_patties.ingredients':
+    '• ~500g cod/haddock fish, diced small\n• 1 egg\n• 2 tbsp buckwheat bread crumbs (optional)\n• Salt & pepper to taste\n• Olive oil for coating',
+  'gut.recipe.fish_patties.instructions':
+    'Mix all ingredients, form small patties. Flatten slightly on a baking tray, brush with olive oil. Bake at 180°C for 20–30 minutes.',
+
+  'gut.recipe.quinoa_avocado.name': 'Quinoa with Olive Oil & Avocado',
+  'gut.recipe.quinoa_avocado.ingredients':
+    '• 1 cup quinoa or green buckwheat\n• Salt, pepper, olive oil\n• Avocado, sliced or cubed',
+  'gut.recipe.quinoa_avocado.instructions':
+    'Bring pot to boil, reduce heat and cook for 20 minutes. Add 2 tbsp olive oil, salt and pepper. Serve with avocado and fresh vegetables. Optional: pair with one of the spreads.',
+
+  'gut.recipe.sardine_wraps.name': 'Sardine & Avocado Lettuce Wraps',
+  'gut.recipe.sardine_wraps.ingredients':
+    '• Lettuce leaves\n• 1 can sardines in organic olive oil\n• 2–3 eggs\n• Avocado\n• Seasoning to taste',
+  'gut.recipe.sardine_wraps.instructions':
+    'Mash or dice all ingredients. Place on lettuce leaves. Roll up, cut in half. Enjoy — a perfect wrap!',
 
   // Calculator
   'calc.header': 'Daily Calorie Calculator',
