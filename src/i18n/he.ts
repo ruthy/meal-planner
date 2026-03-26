@@ -628,8 +628,20 @@ const he: Record<string, string> = {
   'landing.feature.exercise.desc': 'אימונים של 7–12 דקות בעומס נמוך עם סרטוני YouTube מוטמעים.',
   'landing.feature.shots.title': 'שוטים בוקר',
   'landing.feature.shots.desc': 'שוטי בריאות MetaBoost לחילוף חומרים ואיזון הורמונלי.',
+  'landing.feature.scanner.title': 'סורק צלחת',
+  'landing.feature.scanner.desc':
+    'צלמי את הארוחה והבינה המלאכותית שלנו מזהה את המאכלים, מעריכה מנות ומחשבת קלוריות ומאקרו.',
   'landing.feature.progress.title': 'מעקב התקדמות',
   'landing.feature.progress.desc': 'גרפי מגמת משקל, רצפים יומיים ומעקב השלמה.',
+
+  'landing.auth.title': 'הצטרפי ל-DailyBite',
+  'landing.auth.subtitle': 'צרי חשבון חינמי והתחילי את המסע שלך היום.',
+  'landing.auth.name_placeholder': 'השם המלא שלך',
+  'landing.auth.password_create': 'צרי סיסמה (לפחות 6 תווים)',
+  'landing.auth.password_enter': 'הסיסמה שלך',
+  'landing.auth.error_name': 'נא להזין את השם המלא.',
+  'landing.auth.error_email': 'נא להזין כתובת אימייל תקינה.',
+  'landing.auth.error_password': 'הסיסמה חייבת להיות לפחות 6 תווים.',
 
   'landing.social.title': 'מתוכנן לתוצאות אמיתיות',
   'landing.social.stat1': 'קלוריות/יום בתוכנית מאוזנת',

@@ -1358,8 +1358,20 @@ const en: Record<string, string> = {
   'landing.feature.exercise.desc': '7–12 minute low-impact workouts with embedded YouTube tutorials.',
   'landing.feature.shots.title': 'Morning Shots',
   'landing.feature.shots.desc': 'MetaBoost wellness shots designed for metabolism and hormone balance.',
+  'landing.feature.scanner.title': 'Plate Scanner',
+  'landing.feature.scanner.desc':
+    'Snap a photo of your meal and our AI instantly identifies the food, estimates portions, and calculates calories & macros.',
   'landing.feature.progress.title': 'Progress Tracking',
   'landing.feature.progress.desc': 'Weight trend charts, daily streaks, and completion tracking.',
+
+  'landing.auth.title': 'Join DailyBite',
+  'landing.auth.subtitle': 'Create your free account and start your journey today.',
+  'landing.auth.name_placeholder': 'Your full name',
+  'landing.auth.password_create': 'Create a password (min 6 chars)',
+  'landing.auth.password_enter': 'Your password',
+  'landing.auth.error_name': 'Please enter your full name.',
+  'landing.auth.error_email': 'Please enter a valid email address.',
+  'landing.auth.error_password': 'Password must be at least 6 characters.',
 
   'landing.social.title': 'Designed for real results',
   'landing.social.stat1': 'cal/day balanced plan',

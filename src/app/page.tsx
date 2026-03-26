@@ -1,17 +1,76 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { createClient } from '@/lib/supabase/client';
+import { useRouter } from 'next/navigation';
 import LanguageToggle from '@/components/LanguageToggle';
 import EmailCapture from '@/components/EmailCapture';
 
 export default function LandingPage() {
   const { user, loading } = useAuth();
   const { t } = useLanguage();
+  const router = useRouter();
+  const supabase = createClient();
 
-  const ctaHref = user ? '/dashboard' : '/login';
+  const [authTab, setAuthTab] = useState<'signin' | 'signup'>('signup');
+  const [authName, setAuthName] = useState('');
+  const [authEmail, setAuthEmail] = useState('');
+  const [authPassword, setAuthPassword] = useState('');
+  const [authError, setAuthError] = useState('');
+  const [authMessage, setAuthMessage] = useState('');
+  const [authLoading, setAuthLoading] = useState(false);
+
+  const ctaHref = user ? '/dashboard' : '#auth';
   const ctaText = user ? t('landing.hero.cta_dashboard') : t('landing.hero.cta');
+
+  const handleAuthSubmit = async () => {
+    setAuthError('');
+    setAuthMessage('');
+
+    if (authTab === 'signup' && !authName) {
+      setAuthError(t('landing.auth.error_name'));
+      return;
+    }
+    if (!authEmail || !authEmail.includes('@')) {
+      setAuthError(t('landing.auth.error_email'));
+      return;
+    }
+    if (!authPassword || authPassword.length < 6) {
+      setAuthError(t('landing.auth.error_password'));
+      return;
+    }
+
+    setAuthLoading(true);
+
+    if (authTab === 'signup') {
+      const { error } = await supabase.auth.signUp({
+        email: authEmail,
+        password: authPassword,
+        options: { data: { full_name: authName } },
+      });
+      setAuthLoading(false);
+      if (error) {
+        setAuthError(error.message);
+        return;
+      }
+      setAuthMessage(t('check_email_confirm'));
+    } else {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: authEmail,
+        password: authPassword,
+      });
+      setAuthLoading(false);
+      if (error) {
+        setAuthError(error.message);
+        return;
+      }
+      router.push('/dashboard');
+      router.refresh();
+    }
+  };
 
   return (
     <div className="min-h-screen bg-surface-bg">
@@ -46,12 +105,25 @@ export default function LandingPage() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-            <Link
-              href={ctaHref}
-              className="inline-flex items-center justify-center px-7 py-3.5 bg-white text-brand-green-dark font-bold text-[15px] rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all no-underline"
-            >
-              {loading ? t('common.loading') : ctaText}
-            </Link>
+            {user ? (
+              <Link
+                href="/dashboard"
+                className="inline-flex items-center justify-center px-7 py-3.5 bg-white text-brand-green-dark font-bold text-[15px] rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all no-underline"
+              >
+                {loading ? t('common.loading') : t('landing.hero.cta_dashboard')}
+              </Link>
+            ) : (
+              <a
+                href="#auth"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('auth')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="inline-flex items-center justify-center px-7 py-3.5 bg-white text-brand-green-dark font-bold text-[15px] rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all no-underline cursor-pointer"
+              >
+                {loading ? t('common.loading') : t('landing.hero.cta')}
+              </a>
+            )}
             <a
               href="#features"
               onClick={(e) => {
@@ -76,6 +148,7 @@ export default function LandingPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
+              { icon: '📸', titleKey: 'landing.feature.scanner.title', descKey: 'landing.feature.scanner.desc' },
               { icon: '🍽️', titleKey: 'landing.feature.meals.title', descKey: 'landing.feature.meals.desc' },
               { icon: '📊', titleKey: 'landing.feature.calculator.title', descKey: 'landing.feature.calculator.desc' },
               { icon: '💧', titleKey: 'landing.feature.water.title', descKey: 'landing.feature.water.desc' },
@@ -150,6 +223,128 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
+      {/* ===== SIGN UP / SIGN IN ===== */}
+      {!user && (
+        <section
+          id="auth"
+          className="px-5 py-16 md:py-20"
+          style={{ background: 'linear-gradient(160deg, #065F46 0%, #1D9E75 100%)' }}
+        >
+          <div className="max-w-[380px] mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-2">{t('landing.auth.title')}</h2>
+              <p className="text-white/70 text-sm">{t('landing.auth.subtitle')}</p>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 shadow-2xl">
+              {/* Tabs */}
+              <div className="flex bg-surface-bg rounded-lg p-0.5 mb-5">
+                {(['signup', 'signin'] as const).map((tabVal) => (
+                  <button
+                    key={tabVal}
+                    onClick={() => {
+                      setAuthTab(tabVal);
+                      setAuthError('');
+                      setAuthMessage('');
+                    }}
+                    className={`flex-1 py-2.5 border-none rounded-md text-[13px] font-bold cursor-pointer transition-all
+                      ${authTab === tabVal ? 'bg-brand-green text-white' : 'bg-transparent text-content-muted'}`}
+                  >
+                    {tabVal === 'signin' ? t('sign_in') : t('sign_up')}
+                  </button>
+                ))}
+              </div>
+
+              {/* Error / Success */}
+              {authError && (
+                <div className="bg-red-50 border border-red-300 rounded-md px-3 py-2 text-xs text-red-800 mb-3">
+                  {authError}
+                </div>
+              )}
+              {authMessage && (
+                <div className="bg-green-50 border border-green-300 rounded-md px-3 py-2 text-xs text-green-800 mb-3">
+                  {authMessage}
+                </div>
+              )}
+
+              {/* Name (signup only) */}
+              {authTab === 'signup' && (
+                <div className="mb-3">
+                  <label className="text-[11px] font-bold text-content-muted uppercase tracking-wider block mb-1.5">
+                    {t('full_name')}
+                  </label>
+                  <input
+                    type="text"
+                    value={authName}
+                    onChange={(e) => setAuthName(e.target.value)}
+                    placeholder={t('landing.auth.name_placeholder')}
+                    className="w-full px-3.5 py-2.5 border-[1.5px] border-surface-border rounded-lg text-sm outline-none transition-colors focus:border-brand-green"
+                  />
+                </div>
+              )}
+
+              {/* Email */}
+              <div className="mb-3">
+                <label className="text-[11px] font-bold text-content-muted uppercase tracking-wider block mb-1.5">
+                  {t('email')}
+                </label>
+                <input
+                  type="email"
+                  value={authEmail}
+                  onChange={(e) => setAuthEmail(e.target.value)}
+                  placeholder="your@email.com"
+                  className="w-full px-3.5 py-2.5 border-[1.5px] border-surface-border rounded-lg text-sm outline-none transition-colors focus:border-brand-green"
+                />
+              </div>
+
+              {/* Password */}
+              <div className="mb-5">
+                <label className="text-[11px] font-bold text-content-muted uppercase tracking-wider block mb-1.5">
+                  {t('password')}
+                </label>
+                <input
+                  type="password"
+                  value={authPassword}
+                  onChange={(e) => setAuthPassword(e.target.value)}
+                  placeholder={
+                    authTab === 'signup' ? t('landing.auth.password_create') : t('landing.auth.password_enter')
+                  }
+                  className="w-full px-3.5 py-2.5 border-[1.5px] border-surface-border rounded-lg text-sm outline-none transition-colors focus:border-brand-green"
+                />
+              </div>
+
+              {/* Submit */}
+              <button
+                onClick={handleAuthSubmit}
+                disabled={authLoading}
+                className="w-full py-3 bg-brand-green text-white border-none rounded-lg text-[15px] font-bold cursor-pointer hover:bg-brand-green-dark transition-colors disabled:opacity-50"
+              >
+                {authLoading
+                  ? t('common.loading')
+                  : authTab === 'signup'
+                    ? `${t('create_account')} →`
+                    : `${t('sign_in')} →`}
+              </button>
+
+              {/* Switch link */}
+              <div className="text-center mt-3 text-xs text-content-muted">
+                {authTab === 'signup' ? t('have_account') : t('no_account')}{' '}
+                <button
+                  onClick={() => {
+                    setAuthTab(authTab === 'signup' ? 'signin' : 'signup');
+                    setAuthError('');
+                    setAuthMessage('');
+                  }}
+                  className="text-brand-green font-bold border-none bg-transparent cursor-pointer"
+                >
+                  {authTab === 'signup' ? t('sign_in') : t('sign_up')}
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ===== BILINGUAL CALLOUT ===== */}
       <section className="px-5 py-10">
