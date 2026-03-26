@@ -44,9 +44,56 @@ const en: Record<string, string> = {
   'section.gut.subtitle': 'Bloating tracker · 48h detox · Anti-bloat recipes',
 
   // Gut Health
+  'gut.tab.tips': 'How to Eat',
   'gut.tab.tracker': 'Tracker',
   'gut.tab.detox': '48h Detox',
   'gut.tab.recipes': 'Recipes',
+
+  // Eating Tips
+  'gut.tips.title': 'How to Eat for Better Digestion',
+  'gut.tips.intro':
+    "It's not just what you eat — it's how and when. These simple habits can dramatically reduce bloating, improve digestion, and help your body absorb more nutrients.",
+  'gut.tips.quote': '"The body already knows the way — now I\'m learning to listen to it."',
+
+  'gut.tip.water_before.title': 'Drink water 30 min before meals',
+  'gut.tip.water_before.desc':
+    'Drink 1–2 glasses of water 20–30 minutes before eating. This prepares your stomach for digestion and helps you feel full with less food.',
+
+  'gut.tip.no_water_during.title': 'Avoid drinking during meals',
+  'gut.tip.no_water_during.desc':
+    'Drinking while eating dilutes stomach acid and digestive enzymes, making it harder to break down food. Wait at least 30 minutes after eating to drink.',
+
+  'gut.tip.chew.title': 'Chew slowly — 20+ times per bite',
+  'gut.tip.chew.desc':
+    'Digestion starts in the mouth. Chewing well breaks food into smaller pieces and mixes it with saliva enzymes. Eating too fast is one of the top causes of bloating.',
+
+  'gut.tip.veggies_first.title': 'Eat vegetables & greens first',
+  'gut.tip.veggies_first.desc':
+    'Start every meal with vegetables and leafy greens, then move to protein, and finish with carbs. This order slows sugar absorption and reduces bloating.',
+
+  'gut.tip.fruit_alone.title': 'Eat fruit alone or before meals',
+  'gut.tip.fruit_alone.desc':
+    'Fruit digests quickly (20–30 min). If eaten after a heavy meal, it ferments in the stomach and causes gas and bloating. Eat fruit on an empty stomach or 30 min before a meal.',
+
+  'gut.tip.no_snacking.title': 'Avoid snacking between meals',
+  'gut.tip.no_snacking.desc':
+    'Give your digestive system 3–4 hours between meals to fully process food. Constant snacking keeps the system working non-stop and leads to incomplete digestion.',
+
+  'gut.tip.stop_before_bed.title': 'Stop eating 2–3 hours before bed',
+  'gut.tip.stop_before_bed.desc':
+    'Your digestion slows at night. Eating late causes food to sit undigested, leading to bloating in the morning, poor sleep, and fat storage.',
+
+  'gut.tip.warm_morning.title': 'Start your day with warm water & lemon',
+  'gut.tip.warm_morning.desc':
+    'A glass of warm water with lemon juice first thing in the morning wakes up your digestive system, stimulates bile flow, and helps flush toxins.',
+
+  'gut.tip.no_coffee_empty.title': 'Never drink coffee on an empty stomach',
+  'gut.tip.no_coffee_empty.desc':
+    'Coffee on an empty stomach increases acid production, irritates the stomach lining, and can cause bloating and cramping. Always eat something first.',
+
+  'gut.tip.eat_calm.title': 'Eat in a calm, relaxed state',
+  'gut.tip.eat_calm.desc':
+    'Stress activates "fight or flight" mode and shuts down digestion. Sit down, take a breath, and eat without screens. Your body can only digest properly when it\'s relaxed.',
 
   // Tracker
   'gut.tracker.intro':

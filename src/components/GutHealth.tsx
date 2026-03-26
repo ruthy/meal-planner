@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { DETOX_PLAN, RECIPES, COMMON_TRIGGERS } from '@/data/gutHealth';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-type Tab = 'tracker' | 'detox' | 'recipes';
+type Tab = 'tips' | 'tracker' | 'detox' | 'recipes';
 
 interface TrackerEntry {
   food: string;
@@ -34,7 +34,21 @@ export default function GutHealth() {
   const [expandedRecipe, setExpandedRecipe] = useState<string | null>(null);
   const [triggerChecks, setTriggerChecks] = useState<Record<string, 'yes' | 'maybe' | 'no' | null>>({});
 
+  const EATING_TIPS = [
+    'gut.tip.water_before',
+    'gut.tip.no_water_during',
+    'gut.tip.chew',
+    'gut.tip.veggies_first',
+    'gut.tip.fruit_alone',
+    'gut.tip.no_snacking',
+    'gut.tip.stop_before_bed',
+    'gut.tip.warm_morning',
+    'gut.tip.no_coffee_empty',
+    'gut.tip.eat_calm',
+  ] as const;
+
   const tabs: { key: Tab; labelKey: string; emoji: string }[] = [
+    { key: 'tips', labelKey: 'gut.tab.tips', emoji: '💡' },
     { key: 'tracker', labelKey: 'gut.tab.tracker', emoji: '📋' },
     { key: 'detox', labelKey: 'gut.tab.detox', emoji: '🌿' },
     { key: 'recipes', labelKey: 'gut.tab.recipes', emoji: '🍽️' },
@@ -84,6 +98,37 @@ export default function GutHealth() {
           </button>
         ))}
       </div>
+
+      {/* ===== EATING TIPS ===== */}
+      {tab === 'tips' && (
+        <div>
+          <div className="p-4 bg-green-50 rounded-xl mb-5 border border-green-200">
+            <h3 className="text-[15px] font-bold text-green-800 mb-2">{t('gut.tips.title')}</h3>
+            <p className="text-[13px] text-green-700 leading-relaxed">{t('gut.tips.intro')}</p>
+          </div>
+
+          <div className="space-y-3">
+            {EATING_TIPS.map((tipKey, i) => (
+              <div
+                key={tipKey}
+                className="flex gap-3.5 items-start bg-white border border-surface-border rounded-xl p-4"
+              >
+                <div className="w-8 h-8 shrink-0 bg-brand-green rounded-full flex items-center justify-center text-white font-bold text-sm shadow-sm">
+                  {i + 1}
+                </div>
+                <div>
+                  <h4 className="text-[14px] font-bold text-content mb-1">{t(`${tipKey}.title`)}</h4>
+                  <p className="text-[13px] text-content-muted leading-relaxed">{t(`${tipKey}.desc`)}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-5 p-4 bg-brand-green-light rounded-xl">
+            <p className="text-[13px] text-content italic text-center leading-relaxed">{t('gut.tips.quote')}</p>
+          </div>
+        </div>
+      )}
 
       {/* ===== BLOATING TRACKER ===== */}
       {tab === 'tracker' && (
